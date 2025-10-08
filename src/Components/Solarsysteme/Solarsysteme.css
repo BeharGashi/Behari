@@ -1,0 +1,191 @@
+/* ===== Solarsysteme – Dark Luxe Variant (updated) ===== */
+
+.ss{
+  color: #15222B;
+  background:whitesmoke;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Apple Color Emoji","Segoe UI Emoji";
+  line-height:1.45;
+  overflow-x:hidden;
+}
+.ss a{ color: #15222B; text-decoration: none; }
+
+/* Container brenda .ss – neutralizo trashëgiminë nga stile globale */
+.ss .container{
+  width:min(1240px,92vw);
+  margin-inline:auto;
+  position:relative;
+  padding:0;
+  display:block; /* siguron që të mos jetë flex nga globalet */
+}
+
+/* 30px mes seksioneve */
+.ss > section{ margin:0; }
+.ss > section + section{ margin-top:30px; }
+
+/* ---------- HERO ---------- */
+.ss-hero{ padding: clamp(2.6rem, 7vw, 4rem) 0; }
+.ss-hero__grid{
+  display:grid !important;
+  grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+  align-items:center;
+  gap: clamp(18px, 3vw, 42px);
+}
+.kicker{
+  display:inline-flex; align-items:center; gap:.6rem; font-size:.82rem;
+  letter-spacing:.08em; text-transform:uppercase; font-weight:700; color: rgba(214,179,73,.92);
+}
+.kicker i{
+  width:.55rem; height:.55rem; border-radius:999px; background: rgba(214,179,73,.92);
+  box-shadow: 0 0 0 4px rgba(214,179,73,.22), 0 0 18px rgba(214,179,73,.45);
+}
+.title-grad{
+  background: linear-gradient(92deg, #15222B, rgba(214,179,73,.92) 100%);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+  filter: drop-shadow(0 10px 24px rgba(0,0,0,.25));
+}
+.lead{ color: #15222B; max-width: 62ch; }
+
+.ss-actions{ display:flex; gap:.9rem; margin-top:1rem; flex-wrap:wrap; }
+.btn{
+  display:inline-flex; align-items:center; gap:.6rem; padding:.85rem 1.15rem;
+  border-radius:999px; font-weight:700; cursor:pointer;
+  border:1px solid rgba(214,179,73,.45); background: rgba(255,255,255,.03);
+  transition: transform .35s ease, box-shadow .35s ease, background .35s ease;
+  box-shadow: inset 0 12px 30px rgba(214,179,73,.18);
+}
+.btn:hover{ transform: translateY(-2px); background: rgba(255,255,255,.06); }
+.btn--gold{ background: linear-gradient(180deg, rgba(214,179,73,.92), rgba(214,179,73,.75)); color:#15222B; }
+
+/* Hero media – imazh rrethor me unazë ari */
+.ss-hero__media{ display:grid; place-items:center; justify-self:center; border-radius:999px;}
+.ss-hero__media .ring{
+  width:min(520px, 70vw); aspect-ratio:1/1; border-radius:999px; overflow:hidden;
+  position:relative; box-shadow: 0 40px 100px rgba(0,0,0,.45);
+}
+.ss-hero__media .ring::before{
+  content:""; position:absolute; inset: -2px;
+  border-radius:999px; pointer-events:none;
+  background: conic-gradient(from 120deg, rgba(214,179,73,.92), rgba(214,179,73,.35), rgba(214,179,73,.92));
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 6px), #000 0);
+          mask: radial-gradient(farthest-side, transparent calc(100% - 6px), #000 0);
+  filter: blur(.5px);
+}
+.ss-hero__media img{
+  width:100%; height:100%; object-fit: cover; display:block;
+  transform: scale(1.03);
+  filter: brightness(.9) contrast(1.05) saturate(1.05);
+}
+
+/* ---------- Vertical wipe ---------- */
+.wipe-vert{ position:relative; overflow:hidden; }
+.wipe-vert::after{
+  content:""; position:absolute; inset:0; background: rgba(214,179,73,.92);
+  transform: translateY(101%);
+}
+.wipe-vert.in-view::after{ animation: wipe-up 1.05s cubic-bezier(.2,.7,.2,1) both; }
+@keyframes wipe-up{
+  0%{ transform: translateY(101%); }
+  50%{ transform: translateY(0%); }
+  100%{ transform: translateY(-101%); }
+}
+.wipe-vert .wipe-target{
+  opacity:0; transform: translateY(14px);
+  transition: opacity .6s ease .45s, transform .6s ease .45s;
+}
+.wipe-vert.in-view .wipe-target{ opacity:1; transform:none; }
+
+/* ---------- USP STRIP ---------- */
+.ss-strip{ padding: 10px 0 0; }
+.ss-strip .stagger{
+  display:grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: clamp(16px,1.8vw,24px);
+}
+.u-card{
+  border:1px solid rgba(214,179,73,.35);
+  background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+  border-radius:18px; padding:1.1rem 1.2rem 1.35rem; text-align:center;
+  box-shadow: 0 22px 60px rgba(0,0,0,.4); position:relative;
+}
+.ss-icon{
+  color: rgba(214,179,73,.92);
+  width: 2rem; height:2rem; display:block; margin-inline:auto; margin-bottom:.4rem;
+}
+.u-title{ margin:.35rem 0 .25rem; }
+.gold-underline{
+  position:absolute; left:50%; transform:translateX(-50%);
+  bottom:10px; width:64px; height:2px; background: rgba(214,179,73,.92);
+  box-shadow: 0 0 16px rgba(214,179,73,.35);
+}
+
+/* ---------- SYSTEM CARDS ---------- */
+.ss-systems{ padding: 10px 0; }
+.sys-grid{
+  display:grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: clamp(16px,1.8vw,24px);
+}
+.sys-card{
+  border-radius:18px; overflow:hidden;
+  border:1px solid rgba(214,179,73,.35);
+  background: rgba(255,255,255,.03);
+  box-shadow: 0 24px 70px rgba(0,0,0,.45);
+  position:relative;
+}
+.sys-card .badge{
+  position:absolute; margin:12px; z-index:2;
+  display:inline-block; padding:.35rem .6rem; font-weight:700; letter-spacing:.02em;
+  border:1px solid rgba(214,179,73,.6); background: rgba(214,179,73,.92); color:#15222B; border-radius:999px;
+}
+.sys-media{ position:relative; height:220px; overflow:hidden; }
+.sys-media img{ width:100%; height:100%; object-fit:cover; display:block; }
+.sys-card h3{ margin:.7rem 1rem .35rem 1rem; }
+.sys-card ul{ margin:.2rem 1.2rem 1.2rem 1.2rem; padding-left:1rem; }
+.sys-card li{ color: #15222B; }
+
+/* ---------- CTA ---------- */
+.ss-cta{ padding: 10px 0 3rem; }
+.cta-box{
+  display:grid; grid-template-columns: 1fr auto; align-items:center; gap:1rem;
+  border:1px solid rgba(214,179,73,.35); border-radius:18px;
+  background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+  box-shadow: 0 26px 70px rgba(0,0,0,.4);
+  padding: clamp(1rem,2vw,1.4rem);
+}
+
+/* ---------- Reveal base (nëse përdor edhe .reveal/.stagger diku) ---------- */
+.reveal{ opacity:0; transform: translateY(20px); transition: transform .8s cubic-bezier(.2,.7,.2,1), opacity .8s ease; }
+.reveal.in-view{ opacity:1; transform:none; }
+.stagger > *{ opacity:0; transform: translateY(14px); }
+.stagger.in-view > *{ animation: up .65s cubic-bezier(.2,.7,.2,1) forwards; }
+.stagger.in-view > *:nth-child(1){ animation-delay:.05s; }
+.stagger.in-view > *:nth-child(2){ animation-delay:.15s; }
+.stagger.in-view > *:nth-child(3){ animation-delay:.25s; }
+@keyframes up{ from{opacity:0; transform: translateY(14px)} to{opacity:1; transform:none} }
+
+/* ---------- Photo wipe (reuse) ---------- */
+.photo-wipe{ position:relative; overflow:hidden; }
+.photo-wipe::after{
+  content:""; position:absolute; inset:0; background: rgba(214,179,73,.92);
+  transform: translateX(-101%);
+}
+.photo-wipe.in-view::after{ animation: wipe-sweep 1.15s cubic-bezier(.2,.7,.2,1) both; }
+@keyframes wipe-sweep{
+  0%{transform:translateX(-101%)}
+  50%{transform:translateX(0)}
+  100%{transform:translateX(101%)}
+}
+
+/* ---------- Media ---------- */
+@media (max-width:1080px){
+  .ss-hero__grid{ grid-template-columns: 1fr; }
+  .ss-hero__media .ring{ width:min(420px, 80vw); }
+}
+@media (max-width:640px){
+  /* auto-fit kujdeset vetë për kolonat e kartave */
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce){
+  *{ animation:none !important; transition:none !important; }
+}
