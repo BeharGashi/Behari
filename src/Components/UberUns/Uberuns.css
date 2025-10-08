@@ -1,0 +1,484 @@
+/* =========================
+   Fonts
+   ========================= */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap");
+
+/* Baza e fontit për gjithë faqen */
+html, body {
+  font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI",
+               Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji",
+               "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Titujt → Montserrat (bold) */
+h1, h2, h3,
+.uberuns__title,
+.traumhaus__title,
+.cooperation__title,
+.innovation__title,
+.mass__title {
+  font-family: "Montserrat", "Poppins", Arial, sans-serif;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+}
+
+/* Teksti i trupit → Poppins */
+.uberuns__text,
+.traumhaus__content,
+.cooperation__text,
+.innovation__text,
+.mass__text,
+.nwh-partners,
+.nwh-partner-swiper {
+  font-family: "Poppins", Arial, sans-serif;
+}
+
+/* Kicker/etiketa → Montserrat */
+.uberuns__kicker {
+  font-family: "Montserrat", "Poppins", Arial, sans-serif;
+  font-weight: 700;
+}
+
+/* =========================
+   Über uns
+   ========================= */
+.uberuns {
+  background: whitesmoke;
+  padding: 4rem 2rem;
+}
+
+.uberuns__container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.uberuns__header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.uberuns__kicker {
+  display: inline-block;
+  color: #d6b349;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+
+.uberuns__title {
+  margin: 0.5rem 0 0;
+  font-size: 2rem;
+  font-weight: 800;
+  color: #15222b;
+}
+
+.uberuns__divider {
+  width: 80px;
+  height: 4px;
+  background: #d6b349;
+  margin: 1rem auto 0;
+  border-radius: 2px;
+}
+
+.uberuns__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .uberuns__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.uberuns__text {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #15222b;
+}
+
+.uberuns__features {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 500px) {
+  .uberuns__features {
+    grid-template-columns: 1fr;
+  }
+}
+
+.uberuns__feature {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: #fff;
+  padding: 0.8rem 1rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+  font-weight: 600;
+  color: #15222b;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.uberuns__feature:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+}
+
+.uberuns__icon {
+  color: #d6b349;
+  font-size: 1.2rem;
+}
+
+/* =========================
+   Full-width Image
+   ========================= */
+.fullimage {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.fullimage__img {
+  width: 100%;
+  height: 500px;   /* ndrysho sipas nevojës: p.sh. 100vh për hero të plotë */
+  display: block;
+  object-fit: cover;
+}
+
+/* =========================
+   Traumhaus Section
+   ========================= */
+.traumhaus {
+  background: whitesmoke;
+  padding: 4rem 2rem;
+}
+
+.traumhaus__container {
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.traumhaus__header {
+  margin-bottom: 2rem;
+}
+
+.traumhaus__title {
+  font-size: 1.9rem;
+  font-weight: 800;
+  color: #15222b;
+  line-height: 1.3;
+}
+
+.traumhaus__title span {
+  color: #d6b349;
+}
+
+.traumhaus__content {
+  text-align: left;
+  color: #15222b;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+.traumhaus__content p {
+  margin-bottom: 1.2rem;
+  text-align: center; /* sipas kodit tënd ekzistues */
+}
+
+.traumhaus__closing {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.traumhaus__statement {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #15222b;
+  margin-bottom: 1.5rem;
+}
+
+.traumhaus__statement strong {
+  color: #d6b349;
+  font-size: 1.4rem;
+}
+
+.traumhaus__signature {
+  font-size: 1rem;
+  font-style: italic;
+  color: #15222b;
+}
+
+.traumhaus__signature span {
+  display: block;
+  margin-top: 0.3rem;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+/* =========================
+   Cooperation Section
+   ========================= */
+.cooperation {
+  background: whitesmoke;
+  padding: 4rem 2rem;
+}
+
+.cooperation__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+@media (max-width: 900px) {
+  .cooperation__container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .cooperation__image img {
+    margin: 0 auto;
+  }
+}
+
+.cooperation__text {
+  color: #15222b;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.cooperation__title {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  color: #15222b;
+}
+
+.cooperation__title span {
+  color: #d6b349;
+}
+
+.cooperation__text p {
+  margin-bottom: 1.2rem;
+}
+
+.cooperation__image img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  transition: transform 0.3s ease;
+}
+
+.cooperation__image img:hover {
+  transform: scale(1.02);
+}
+
+/* =========================
+   Innovation Section
+   ========================= */
+.innovation {
+  background: #fff;
+  padding: 4rem 2rem;
+}
+
+.innovation__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+@media (max-width: 900px) {
+  .innovation__container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .innovation__image img {
+    margin: 0 auto;
+  }
+}
+
+.innovation__text {
+  color: #15222b;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.innovation__title {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  color: #15222b;
+}
+
+.innovation__title span {
+  color: #d6b349;
+}
+
+.innovation__text p {
+  margin-bottom: 1.2rem;
+}
+
+.innovation__image img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  transition: transform 0.3s ease;
+}
+
+.innovation__image img:hover {
+  transform: scale(1.02);
+}
+
+/* =========================
+   Maßgeschneidert Section
+   ========================= */
+.mass-section {
+  background: whitesmoke;
+  padding: 4rem 2rem;
+}
+
+.mass__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr; /* pak më shumë hapësirë për tekst */
+  gap: 2.5rem;
+  align-items: center;
+}
+
+@media (max-width: 900px) {
+  .mass__container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .mass__image img {
+    margin: 0 auto;
+  }
+}
+
+.mass__text {
+  color: #15222b;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.mass__title {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 1.25rem;
+  color: #15222b;
+}
+
+.mass__title span {
+  color: #d6b349;
+}
+
+.mass__text p {
+  margin-bottom: 1.15rem;
+}
+
+.mass__image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  transition: transform 0.3s ease;
+}
+
+.mass__image img:hover {
+  transform: scale(1.02);
+}
+
+/* =========================
+   Partners Section (Swiper)
+   ========================= */
+.nwh-partners {
+  background-color: var(--white, #fff);
+  text-align: center;
+  padding-block: clamp(2rem, 6vw, var(--space-xl, 4rem));
+  padding-inline: clamp(1rem, 4vw, var(--space-md, 2rem));
+}
+
+.nwh-partners h2 {
+  font-size: var(--text-xxxl, clamp(1.5rem, 3.2vw + 0.5rem, 2.5rem));
+  margin-bottom: clamp(1rem, 4vw, var(--space-lg, 2rem));
+  font-weight: 700;
+  color: var(--text-dark, #222);
+  text-wrap: balance;
+  font-family: "Montserrat", "Poppins", Arial, sans-serif; /* titull partnerësh */
+}
+
+/* Grid i logos */
+.nwh-partner-swiper {
+  display: grid !important; /* Swiper shton display-in e vet – e detyrojmë grid */
+  gap: clamp(0.75rem, 3vw, var(--space-lg, 2rem));
+  grid-template-columns: repeat(2, minmax(120px, 1fr)); /* Telefon: 2 kolona */
+  place-items: center;
+  max-width: 1200px;
+  margin-inline: auto;
+}
+
+/* Logo individuale */
+.nwh-partner-swiper img {
+  width: min(100%, clamp(90px, 18vw, 150px));
+  height: clamp(32px, 6vw, 80px);
+  object-fit: contain;
+  filter: grayscale(100%);
+  opacity: 0.6;
+  transition: transform 0.3s ease, filter 0.3s ease, opacity 0.3s ease;
+}
+
+/* Hover vetëm në pajisje me maus */
+@media (hover: hover) and (pointer: fine) {
+  .nwh-partner-swiper img:hover {
+    transform: scale(1.08);
+    filter: grayscale(0%);
+    opacity: 1;
+  }
+}
+
+/* Tablet (≥ 600px) */
+@media (min-width: 600px) {
+  .nwh-partner-swiper {
+    grid-template-columns: repeat(4, minmax(140px, 1fr)); /* 4 kolona */
+  }
+}
+
+/* Desktop (≥ 1024px) */
+@media (min-width: 1024px) {
+  .nwh-partner-swiper {
+    grid-template-columns: repeat(6, minmax(150px, 1fr)); /* 6 kolona */
+    gap: var(--space-lg, 2rem);
+  }
+  .nwh-partners {
+    padding-block: var(--space-xl, 4rem);
+  }
+}
+
+/* Fokus për aksesueshmëri nëse logot janë brenda <a> */
+.nwh-partner-swiper a:focus-visible {
+  outline: 2px solid color-mix(in oklab, var(--text-dark, #222), transparent 60%);
+  outline-offset: 4px;
+  border-radius: 12px;
+}
