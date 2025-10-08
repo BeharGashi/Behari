@@ -1,0 +1,158 @@
+/* ===== Image Comparison (Plan) ===== */
+
+.plan,
+.plan * { box-sizing: border-box; }
+
+.plan {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.plan .plan__wrapper {
+  width: 90%;
+  max-width: 900px;
+  aspect-ratio: 3 / 2;
+  position: relative;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+  background-color: #fff;
+}
+
+/* Images */
+.plan .plan__imgContainer {
+  width: 100%;
+  height: 110%;
+  position: relative;
+}
+
+.plan .plan__image {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  user-select: none;
+}
+
+.plan .plan__image--base {
+  transform: scale(0.80);
+  transform-origin: center;
+  z-index: 1;
+  margin-top: -20px;
+}
+
+.plan .plan__image--overlay {
+  clip-path: inset(0 0 0 50%);
+  z-index: 2;
+  margin-top: -24px;
+}
+
+/* Scroller (knob + guideline) */
+.plan .plan__scroller {
+  width: 44px;
+  height: 44px;
+  background-color: #fff;
+  border: 3px solid #C19976;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;                 /* do të mbulohet nga style inline me % */
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  cursor: ew-resize;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(193, 153, 118, 0.3);
+  padding: 0;                /* është <button> */
+}
+
+.plan .plan__scroller:hover {
+  transform: translate(-50%, -50%) scale(1.1);
+  box-shadow: 0 6px 16px rgba(193, 153, 118, 0.4);
+}
+.plan .plan__scroller:active {
+  transform: translate(-50%, -50%) scale(0.95);
+}
+
+.plan .plan__scroller::before,
+.plan .plan__scroller::after {
+  content: "";
+  width: 4px;
+  height: 1000px;
+  background: #d6b349;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0.8;
+  pointer-events: none;
+}
+.plan .plan__scroller::before { top: 100%; }
+.plan .plan__scroller::after  { bottom: 100%; }
+
+.plan .plan__scrollerThumb {
+  width: 14px;
+  height: 14px;
+  background: #d6b349;
+  border-radius: 50%;
+  display: block;
+}
+
+/* Slide hints (arrows) */
+.plan .plan__hint {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9;
+  pointer-events: none;
+  opacity: 0.7;
+}
+.plan .plan__hint--left  { transform: translate(22px, -50%); }
+.plan .plan__hint--right { transform: translate(-64px, -50%); }
+
+.plan .plan__arrow {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.plan .plan__arrow--left  { transform: rotate(-90deg); }
+.plan .plan__arrow--right { transform: rotate(90deg); }
+
+.plan .plan__arrow span {
+  display: block;
+  width: 16px;
+  height: 16px;
+  border-bottom: 2px solid #082C38;
+  border-right: 2px solid #082C38;
+  transform: rotate(45deg);
+  margin: -3px;
+  animation: plan-animateArrow 2.5s infinite ease-in-out;
+  opacity: 0;
+}
+.plan .plan__arrow span:nth-child(1) { animation-delay: 0s; }
+.plan .plan__arrow span:nth-child(2) { animation-delay: .3s; }
+.plan .plan__arrow span:nth-child(3) { animation-delay: .6s; }
+
+@keyframes plan-animateArrow {
+  0%   { opacity: 0; transform: rotate(45deg) translate(-8px, -8px); }
+  25%  { opacity: 1; transform: rotate(45deg) translate(0, 0); }
+  75%  { opacity: 1; transform: rotate(45deg) translate(0, 0); }
+  100% { opacity: 0; transform: rotate(45deg) translate(8px, 8px); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .plan .plan__wrapper { width: 95%; }
+  .plan .plan__hint { display: none; }
+}

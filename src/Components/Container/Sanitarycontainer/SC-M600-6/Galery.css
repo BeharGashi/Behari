@@ -1,0 +1,125 @@
+/* ===== 5-Image Gallery (1 / 2 / 3 layout) ===== */
+
+.gal,
+.gal * { box-sizing: border-box; }
+
+.gal {
+  background: whitesmoke;
+  color: #15222b;
+  padding: 30px 20px; /* konsistent me seksionet e tjera */
+  font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+.gal .gal__container {
+  width: min(1200px, 100%);
+  margin: 0 auto;
+}
+
+/* --- Bëje foton kryesore dhe thumbnails më të ngushta & të qendruara --- */
+.gal .gal__main{
+  width: min(900px, 100%);   /* ↑ rregulloje 82% sipas shijes (p.sh. 78–88%) */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.gal .gal__thumbs{
+  width: min(1200px, 100%);   /* ↑ rregulloje 82% sipas shijes (p.sh. 78–88%) */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* --- Main image (rreshti 1) --- */
+.gal .gal__main {
+  margin-top: 0;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 16px 40px rgba(0,0,0,.12);
+  border: 1px solid rgba(21,34,43,.10);
+  aspect-ratio: 16 / 9;              /* parandalon CLS */
+  background: white;
+}
+.gal .gal__mainImg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;               /* trego të gjithë foton */
+  display: block;
+  transform: translateZ(0);
+  transition: transform .5s cubic-bezier(.2,.8,.2,1), filter .35s ease;
+}
+.gal .gal__main:hover .gal__mainImg {
+  transform: scale(1.015);
+  filter: saturate(106%);
+}
+
+/* --- Thumbnails (rreshtat 2 & 3) --- */
+.gal .gal__thumbs {
+  list-style: none;
+  margin: 14px auto 0 auto;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr)); /* 3 sipër, 2 poshtë */
+  gap: 10px;
+}
+.gal .gal__thumbItem { height: 100%; }
+
+.gal .gal__thumbBtn {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 16 / 9;               /* miniatura konsistente, pa shifte */
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(21,34,43,.12);
+  background: #fff;
+  padding: 0;
+  cursor: pointer;
+  transition: transform .2s ease, box-shadow .25s ease, border-color .25s ease;
+  box-shadow: 0 8px 18px rgba(0,0,0,.06);
+}
+.gal .gal__thumbBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px rgba(0,0,0,.09);
+  border-color: rgba(214,179,73,.35);
+}
+.gal .gal__thumbBtn.is-active {
+  border-color: #d6b349;                 /* ari */
+  box-shadow: 0 10px 24px rgba(214,179,73,.25);
+}
+
+.gal .gal__thumbImg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* --- Responsive --- */
+@media (max-width: 900px) {
+  .gal .gal__thumbs { gap: 8px; }
+}
+
+@media (max-width: 640px) {
+  .gal { padding: 30px 16px; }
+
+  /* Mobile: përdor gjithë gjerësinë */
+  .gal .gal__main,
+  .gal .gal__thumbs{ width: 100%; }
+
+  /* Në mobile: rresht unik horizontal me scroll */
+  .gal .gal__thumbs {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 32%;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: thin;
+    gap: 10px;
+    padding-bottom: 4px;
+  }
+  .gal .gal__thumbs::-webkit-scrollbar { height: 6px; }
+  .gal .gal__thumbs::-webkit-scrollbar-thumb {
+    background: rgba(21,34,43,.2);
+    border-radius: 4px;
+  }
+}
