@@ -1,0 +1,139 @@
+/* ===== Planung – Quiet Luxury Layout =====
+   Palette: whitesmoke (bg), #15222B (ink), rgba(214,179,73,.92) (gold)
+*/
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Poppins:wght@400;500;600&display=swap');
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+html, body { margin: 0; width: 100%; overflow-x: hidden; }
+
+body {
+  background: whitesmoke;
+  color: #15222B;
+  font-family: 'Poppins', -apple-system, Segoe UI, Roboto, Inter, Ubuntu, Arial, sans-serif;
+  line-height: 1.65;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Cormorant Garamond', Georgia, serif; 
+  letter-spacing: 0.2px;
+}
+
+.lx-container { width: min(1180px, 100% - clamp(24px, 7vw, 80px)); margin-inline: auto; }
+
+/* ---------- Buttons ---------- */
+.lx-btn{
+  display:inline-block; text-decoration:none; font-weight:600;
+  padding: 12px 18px; border-radius: 999px; transition: transform .15s ease, box-shadow .15s ease;
+}
+.lx-btn--primary{ background: rgba(214,179,73,.92); color: #15222B; }
+.lx-btn--primary:hover{ transform: translateY(-1px); box-shadow: 0 10px 26px rgba(214,179,73,.35); }
+
+/* ---------- HERO ---------- */
+.lx-hero{ padding: clamp(28px, 4vw, 40px) 0 clamp(16px, 3vw, 32px); }
+.lx-hero-grid{
+  display:grid; grid-template-columns: 1.05fr .95fr; gap: clamp(20px, 4vw, 40px); align-items: center;
+}
+@media (max-width: 900px){ .lx-hero-grid{ grid-template-columns: 1fr; } }
+
+.lx-hero-copy .lx-eyebrow{
+  text-transform: uppercase; letter-spacing:.14em;
+  font-size: clamp(.72rem, 1.4vw, .9rem); opacity:.85;
+}
+.lx-hero-copy h1{
+  margin: .4rem 0 .6rem; font-size: clamp(2.2rem, 4.2vw, 3.4rem); line-height:1.1;
+  position: relative;
+}
+.lx-hero-copy h1::after{
+  content:""; display:block; width: 92px; height: 3px; margin-top: 14px;
+  background: rgba(214,179,73,.92);
+}
+.lx-hero-copy p{ max-width: 640px; margin: 0 0 18px; opacity:.92; }
+
+.lx-hero-visual{
+  aspect-ratio: 5/3;
+  border-radius: 22px;
+  background: linear-gradient(180deg, rgba(21,34,43,.18), rgba(21,34,43,.5)), url('') center/cover no-repeat;
+  box-shadow: 0 20px 48px rgba(11,17,22,.18);
+  outline: 1px solid rgba(21,34,43,.06);
+  position: relative;
+}
+.lx-hero-visual::before{
+  content:""; position:absolute; inset:10px; border-radius:18px;
+  border: 1px solid rgba(214,179,73,.92);
+  pointer-events:none;
+}
+
+/* ---------- PHILOSOPHY / PILLARS ---------- */
+.lx-section{ padding: clamp(32px, 6vw, 72px) 0; }
+.lx-promise .lx-pillars{
+  display:grid; grid-template-columns: repeat(3, 1fr); gap: clamp(16px, 2.2vw, 22px);
+}
+@media (max-width: 900px){ .lx-promise .lx-pillars{ grid-template-columns: 1fr; } }
+
+.lx-pillar{
+  background:#fff; border:1px solid rgba(21,34,43,.07); border-radius:18px; padding:22px;
+  box-shadow: 0 12px 28px rgba(11,17,22,.06);
+}
+.lx-pillar h3{ margin:.1rem 0 .4rem; font-size: clamp(1.4rem, 2.4vw, 2rem); }
+.lx-pillar p{ margin:0; color:#3b4750; }
+
+/* ---------- STEPS (ZigZag) ---------- */
+.lx-steps .lx-step{
+  display:grid; grid-template-columns: .95fr 1.05fr; gap: clamp(18px, 3.2vw, 40px); align-items:center;
+  margin: clamp(10px, 2vw, 18px) 0;
+}
+.lx-steps .lx-step.is-reverse{ grid-template-columns: 1.05fr .95fr; }
+@media (max-width: 960px){
+  .lx-steps .lx-step, .lx-steps .lx-step.is-reverse{ grid-template-columns: 1fr; }
+}
+
+.lx-picture{
+  aspect-ratio: 16/10;
+  background: linear-gradient(180deg, rgba(21,34,43,.16), rgba(21,34,43,.5)), url('') center/cover no-repeat;
+  border-radius: 18px; box-shadow: 0 16px 40px rgba(11,17,22,.14);
+  outline: 1px solid rgba(21,34,43,.06);
+  position:relative;
+}
+.lx-picture::after{
+  content:""; position:absolute; inset:12px; border-radius:14px;
+  border:1px solid rgba(214,179,73,.92); pointer-events:none;
+}
+
+.lx-copy .lx-badge{
+  display:inline-block; margin-bottom: 6px; font-weight:700; font-size:.82rem;
+  background: rgba(214,179,73,.92); color:#15222B; border-radius:999px; padding:6px 10px;
+}
+.lx-copy h3{ margin:.2rem 0 .4rem; font-size: clamp(1.5rem, 2.2vw, 1.9rem); }
+.lx-copy p{ margin:0 0 .6rem; color:#334249; }
+.lx-list{ margin:0; padding: 0 0 0 18px; color:#3a4850; }
+.lx-list li{ margin:.24rem 0; }
+
+/* ---------- TIMELINE ---------- */
+.lx-timeline-wrap h2{ margin: 0 0 .6rem; font-size: clamp(1.6rem, 2.6vw, 2.1rem); }
+.lx-timeline{
+  list-style:none; margin:0; padding:0; position:relative; 
+  border-left: 2px solid rgba(214,179,73,.35);
+}
+.lx-timeline li{ display:grid; grid-template-columns: auto 1fr; gap:12px; padding: 16px 0 16px 14px; }
+.lx-dot{
+  width:12px; height:12px; border-radius:999px; background: rgba(214,179,73,.92); margin-top: 6px;
+  box-shadow: 0 0 0 4px rgba(214,179,73,.12);
+}
+.lx-timeline h4{ margin:0 0 .2rem; }
+.lx-timeline p{ margin:0; color:#3b4750; }
+
+/* ---------- CTA BAND ---------- */
+.lx-cta{
+  background: linear-gradient(160deg, #15222B 0%, #0f171c 60%, #0b1116 100%);
+  color:#fff; text-align:center; padding: clamp(36px, 7vw, 72px) 0;
+  margin-top: clamp(12px, 2vw, 24px);
+}
+.lx-cta-inner h3{ margin:.2rem 0 .4rem; font-size: clamp(1.6rem, 2.6vw, 2.1rem); }
+.lx-cta-inner p{ margin:.2rem 0 .8rem; color: rgba(255,255,255,.86); }
+
+/* ---------- Utilities ---------- */
+.lx-page section{ overflow-x: clip; }  /* no stray horizontal scroll */
