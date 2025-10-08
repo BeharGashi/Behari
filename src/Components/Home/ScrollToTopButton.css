@@ -1,0 +1,31 @@
+.scroll-to-top {
+  position: fixed;
+  bottom: 75px; /* 20px më lart */
+  right: 30px;
+  z-index: 999;
+  background-color: #15222B;
+  color: #D6B349 !important;
+  border: none;
+  border-radius: 25px;
+  width: 70px;  /* Gjerësia e butonit */
+  height: 50px; /* Lartësia e butonit */
+  font-size: 22px; /* Madhësia e ikonës/textit */
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(21, 34, 43, 0.3);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.scroll-to-top:hover {
+  background-color: #D6B349;
+  color: #15222B !important;
+  border-radius: 25px !important;
+  transform: none;
+}
+
+.scroll-to-top.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: none;
+}
