@@ -1,0 +1,168 @@
+/* ======= Seksioni 1 ======= */
+.doppelhaus{
+  position: relative;
+  background: white;               /* sfond i lehtë, pa gradient */
+  padding: 72px 16px 48px;
+  overflow: hidden;
+}
+
+.dh__container{
+  max-width:1120px;
+  margin:0 auto;
+  text-align:center;
+  opacity:0;
+  transform: translateY(12px);
+  animation: dh-rise 650ms ease forwards;
+}
+
+.dh__title{
+  margin:0 0 22px 0;
+  font-weight:800;
+  line-height:1.18;
+  letter-spacing:0.2px;
+  font-size: clamp(28px, 4vw, 48px);
+  color:#15222B;                     /* pa gradient në tekst */
+  display:inline-block;
+  position:relative;
+}
+
+.dh__title::after{
+  content:"";
+  display:block;
+  width:112px;
+  height:3px;
+  margin:14px auto 0;
+  background:#D6B349;                /* underline i pastër */
+  transform-origin:left;
+  transform: scaleX(0);
+  animation: dh-underline 700ms ease 200ms forwards;
+}
+
+.dh__lead{
+  margin:10px auto;
+  color: rgba(21,34,43,0.78);
+  font-size: clamp(15px, 1.2vw, 18px);
+  line-height:1.9;
+  max-width:980px;
+}
+.dh__lead--last{ color: rgba(21,34,43,0.92); }
+
+/* Animacione */
+@keyframes dh-rise{
+  from{ opacity:0; transform: translateY(12px); }
+  to  { opacity:1; transform: translateY(0); }
+}
+@keyframes dh-underline{
+  to{ transform: scaleX(1); }
+}
+
+/* Preferencat e përdoruesit */
+@media (prefers-reduced-motion: reduce){
+  .dh__container{ animation:none; opacity:1; transform:none; }
+  .dh__title::after{ animation:none; transform:none; }
+}
+
+/* Desktop spacing */
+@media (min-width:1024px){
+  .doppelhaus{ padding:96px 24px 56px; }
+  .dh__title{ margin-bottom:26px; }
+}
+
+/* ======= Seksioni 2 ======= */
+.dhs{
+  position:relative;
+  padding:72px 16px;
+  background:#f1f5f8;                /* pa gradient */
+  overflow:hidden;
+}
+
+
+.dhs__grid{
+  max-width:1200px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:1fr;
+  gap:28px;
+  align-items:center;
+}
+
+.dhs__col--text{ text-align:left; }
+
+.dhs__title{
+  margin:0 0 18px 0;
+  font-weight:800;
+  line-height:1.18;
+  letter-spacing:.2px;
+  font-size: clamp(26px, 4vw, 42px);
+  color:#15222B;
+  display:inline-block;
+  position:relative;
+}
+
+.dhs__title::after{
+  content:"";
+  display:block;
+  width:88px;
+  height:3px;
+  margin-top:12px;
+  background:#D6B349;
+  transform-origin:left;
+  transform: scaleX(0);
+  animation: dh-underline 700ms ease 150ms forwards;
+}
+
+.dhs__lead{
+  margin:10px 0;
+  color: rgba(21,34,43,0.78);
+  font-size: clamp(15px, 1.15vw, 18px);
+  line-height:1.9;
+  max-width:56ch;
+}
+.dhs__lead--last{ color: rgba(21,34,43,0.92); }
+
+/* Media */
+.dhs__col--media{ position:relative; }
+
+.dhs__img{
+  width:100%;
+  height:100%;
+  max-height:520px;
+  object-fit:cover;
+  display:block;
+  border:1px solid rgba(21,34,43,0.12);   /* pa gradient border */
+  box-shadow: 0 14px 32px rgba(0,0,0,0.10);
+  transform: translateZ(0) scale(1);
+  transition: transform 520ms ease, box-shadow 420ms ease, border-color 420ms ease;
+}
+
+.dhs__img:hover,
+.dhs__img:focus-visible{
+  transform: translateY(-4px) scale(1.015);
+  box-shadow: 0 18px 42px rgba(0,0,0,0.14);
+  border-color:#D6B349;
+  outline:none;
+}
+
+/* Animacion hyrës për kolonat */
+@media (prefers-reduced-motion: no-preference){
+  .dhs__col--text{
+    opacity:0; transform: translateY(14px);
+    animation: dhs-rise 720ms ease 60ms both;
+  }
+  .dhs__col--media{
+    opacity:0; transform: translateY(14px);
+    animation: dhs-rise 820ms ease 140ms both;
+  }
+}
+@keyframes dhs-rise{
+  to{ opacity:1; transform: translateY(0); }
+}
+
+/* Desktop layout */
+@media (min-width:1024px){
+  .dhs{ padding:96px 24px; }
+  .dhs__grid{
+    grid-template-columns: 1.05fr 1fr;
+    gap:40px;
+  }
+}

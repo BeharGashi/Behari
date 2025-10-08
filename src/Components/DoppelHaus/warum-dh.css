@@ -1,0 +1,118 @@
+/* Seksioni i plotë */
+.why-dh{
+  background:#15222B;   /* ose përdor #15222B nëse do konsistencë me pjesët tjera */
+  padding:80px 16px;
+  color:#EAF2F4;
+}
+.why-dh__container{ max-width:1200px; margin:0 auto; }
+
+/* Titulli */
+.why-dh__title{
+  margin:0 auto 28px;
+  text-align:center;
+  font-weight:800;
+  line-height:1.18;
+  letter-spacing:.2px;
+  font-size:clamp(28px,4vw,44px);
+  color:#FFFFFF;
+  display:inline-block;
+  width:100%;
+  position:relative;
+}
+.why-dh__title::after{
+  content:"";
+  display:block;
+  width:160px;
+  height:3px;
+  margin:16px auto 0;
+  background:#D6B349;
+  transform-origin:left;
+  transform:scaleX(0);
+  animation: underline-reveal 600ms ease 120ms forwards;
+}
+
+/* Rrjeti i kartave */
+.why-dh__grid{
+  display:grid;
+  gap:24px;
+  margin-top:22px;
+  grid-template-columns:1fr;
+}
+@media (min-width:700px){ .why-dh__grid{ grid-template-columns:repeat(2,1fr); } }
+@media (min-width:1024px){ .why-dh__grid{ grid-template-columns:repeat(4,1fr); gap:28px; } }
+
+/* Karta */
+.why-dh__card{
+  background:transparent;
+  border:1px solid rgba(255,255,255,0.28);
+  border-radius:10px;          /* vendos 0 nëse s'do rrumbullakime */
+  padding:26px 22px;
+  text-align:center;
+  min-height:280px;
+  box-shadow:0 8px 22px rgba(0,0,0,0.12);
+  transition: transform 420ms ease, box-shadow 420ms ease, border-color 280ms ease, background-color 280ms ease;
+  opacity:0;
+  transform: translateY(16px);
+  animation: card-fade 620ms ease forwards;
+}
+.why-dh__card:nth-child(2){ animation-delay: 80ms; }
+.why-dh__card:nth-child(3){ animation-delay:140ms; }
+.why-dh__card:nth-child(4){ animation-delay:200ms; }
+
+.why-dh__card:hover,
+.why-dh__card:focus{
+  transform: translateY(-6px);
+  box-shadow:0 14px 34px rgba(0,0,0,0.18);
+  border-color:#D6B349;
+  background-color: rgba(255,255,255,0.02);
+  outline:none;
+  cursor:default;
+}
+
+/* Ikona */
+.why-dh__icon{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  margin:0 auto 10px;
+  color:#D6B349;               /* ngjyra e ikonës */
+  width:44px; height:44px;
+}
+.why-dh__icon svg{
+  width:100%; height:100%;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 300ms ease;
+}
+/* efekt i lehtë në hover */
+.why-dh__card:hover .why-dh__icon svg,
+.why-dh__card:focus .why-dh__icon svg{
+  transform: translateY(-2px) scale(1.04);
+}
+
+/* Tipografi brenda kartës */
+.why-dh__card-title{
+  margin:6px 0 10px 0;
+  font-weight:800;
+  font-size:clamp(18px,2.2vw,24px);
+  color:#FFFFFF;
+}
+.why-dh__card-text{
+  margin:0;
+  line-height:1.8;
+  font-size:clamp(14px,1.2vw,17px);
+  color:rgba(255,255,255,0.88);
+}
+
+/* Animacione */
+@keyframes card-fade{ to{ opacity:1; transform:translateY(0); } }
+@keyframes underline-reveal{ to{ transform:scaleX(1); } }
+
+/* Respektim i prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce){
+  .why-dh__card{ animation:none; opacity:1; transform:none; }
+  .why-dh__title::after{ animation:none; transform:none; }
+}
