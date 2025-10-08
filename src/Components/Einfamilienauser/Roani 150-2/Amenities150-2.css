@@ -1,0 +1,77 @@
+/* Paleta lokale */
+.amv152 { --ink:#15222B; --accent:#D6B349; --muted:rgba(21,34,43,.7); }
+
+/* Seksioni */
+.amv152{
+  background:#fff;
+  color:var(--ink);
+  padding: clamp(16px, 3vw, 24px) 20px clamp(32px, 6vw, 56px);
+}
+.amv152__inner{
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Titulli me vijë në të majtë */
+.amv152__title{
+  position:relative;
+  margin:0 0 clamp(10px, 2vw, 16px);
+  padding-left:12px;
+  font-weight:900;
+  font-size: clamp(18px, 2.4vw, 24px);
+}
+.amv152__title::before{
+  content:"";
+  position:absolute; left:0; top:.25em; bottom:.25em;
+  width:3px; border-radius:2px; background:var(--accent);
+}
+
+/* ===== Lista – 3/2/1 kolona ===== */
+.amv152__grid{
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0,1fr)); /* Desktop: 3 kolona */
+  gap: clamp(12px, 2vw, 18px) clamp(24px, 4vw, 56px);
+  align-content: center;
+}
+
+/* 2 kolona në tablet */
+@media (max-width: 900px){
+  .amv152__grid{ grid-template-columns: repeat(2, minmax(0,1fr)); }
+}
+
+/* 1 kolonë në mobile */
+@media (max-width: 560px){
+  .amv152__grid{ grid-template-columns: 1fr; }
+  .amv152__item{ min-height: 36px; gap:12px; }
+}
+
+/* Elementi i listës */
+.amv152__item{
+  display:flex; align-items:center; gap:10px;
+  min-height: 32px;
+}
+
+/* Kutia “checked” */
+.amv152__check{
+  width: clamp(18px, 2.4vw, 20px);
+  height: clamp(18px, 2.4vw, 20px);
+  display:grid; place-items:center;
+  border-radius:4px;
+  color:#15222B;
+  background: var(--accent);
+  box-shadow: 0 6px 16px rgba(214,179,73,.28);
+}
+
+/* Emri i amenity */
+.amv152__label{
+  color: var(--muted);
+  font-size: clamp(14px, 1.7vw, 15.5px);
+  line-height: 1.35;
+}
+
+/* Aksesueshmëri */
+.amv152__item:focus-within .amv152__check,
+.amv152__item:focus-visible .amv152__check{
+  outline: 3px solid rgba(214,179,73,.45);
+  outline-offset: 2px;
+}

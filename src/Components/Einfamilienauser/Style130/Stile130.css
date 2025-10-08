@@ -1,0 +1,143 @@
+/* Paletë vetëm për këtë bllok */
+.st130text{ --ink:#15222B; --accent:#D6B349; }
+
+.st130wraper{
+
+  padding-bottom: 70px;
+}
+
+/* Kontejneri kryesor */
+.st130text{
+  background:#fff;
+  color:var(--ink);
+  padding: 32px 20px;
+}
+.st130text__inner{
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ========== HERO (klasa unike) ========== */
+.st130hero{ margin: 0 0 12px; }
+.st130hero__title{
+  margin: 0;
+  font-size: clamp(28px, 4.2vw, 44px);
+  line-height: 1.15;
+  font-weight: 900;
+  letter-spacing: .3px;
+  color: var(--ink);
+}
+.st130hero__meta{
+  margin-top: 6px;
+  display:flex; align-items:center; gap:10px;
+  color: rgba(21,34,43,.70);
+  font-size: 15px;
+}
+.st130hero__icon{ color: var(--accent); }
+.st130hero__metatext{ line-height:1; }
+
+/* ========== SUMMARY (klasa unike) ========== */
+.st130summary{ margin-top: 32px; }
+.st130summary__heading{
+  position:relative;
+  margin:0 0 6px;
+  font-size: clamp(18px,2.4vw,22px);
+  font-weight: 800;
+  padding-left: 14px;
+  color: var(--ink);
+}
+.st130summary__heading::before{
+  content:""; position:absolute; left:0; top:.2em; bottom:.2em;
+  width:3px; border-radius:2px; background: var(--accent);
+}
+.st130summary__p{
+  margin: 0 0 10px;
+  color: rgba(21,34,43,.82);
+  line-height: 1.65;
+  font-size: clamp(15.5px, 1.7vw, 17px);
+}
+
+/* ========== DETAILS (klasa unike) ========== */
+.st130details{ margin-top: 32px; }
+.st130details__heading{
+  position:relative;
+  margin:0 0 6px;
+  font-size: clamp(18px,2.4vw,22px);
+  font-weight: 800;
+  padding-left: 14px;
+  color: var(--ink);
+}
+.st130details__heading::before{
+  content:""; position:absolute; left:0; top:.2em; bottom:.2em;
+  width:3px; border-radius:2px; background: var(--accent);
+}
+.st130details__p{
+  margin: 0 0 10px;
+  color: rgba(21,34,43,.82);
+  line-height: 1.65;
+  font-size: clamp(15.5px, 1.7vw, 17px);
+}
+
+.gal130{
+  background:#fff;
+  color:var(--ink);
+  padding: clamp(24px, 5vw, 48px) 20px;
+}
+.gal130__inner{
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Titulli me vijën e hollë në të majtë */
+.gal130__title{
+  position:relative;
+  margin: 0 0 16px;
+  padding-left: 12px;
+  font-size: clamp(20px, 3.2vw, 28px);
+  font-weight: 900;
+  color: var(--ink);
+}
+.gal130__title::before{
+  content:"";
+  position:absolute; left:0; top:.25em; bottom:.25em;
+  width:3px; border-radius:2px; background: var(--accent);
+}
+
+/* Grid 2-kolona me rreshta fiks, disa elemente "tall" span 2 rreshta  */
+.gal130__grid{
+  display:grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-rows: 210px;                 /* lartësia bazë e rreshtit */
+  gap: 20px;
+}
+
+/* Kuti e imazhit */
+.gal130__item{
+  position:relative;
+  overflow:hidden;
+  border-radius: 12px;
+  background:#f1f3f5;
+  box-shadow: 0 8px 24px rgba(0,0,0,.06);
+  margin: 0;
+}
+.gal130__item--tall{ grid-row: span 2; } /* shtrihet në dy rreshta */
+
+.gal130__img{
+  width:100%;
+  height:100%;
+  object-fit: cover;
+  display:block;
+  transition: transform .35s ease;
+}
+.gal130__item:hover .gal130__img{ transform: scale(1.03); }
+
+/* Responsive */
+@media (max-width: 900px){
+  .gal130__grid{
+    grid-template-columns: 1fr;
+    grid-auto-rows: 220px;
+  }
+  .gal130__item--tall{ grid-row: span 1; } /* në mobile të gjithë njësoj */
+}
+
+

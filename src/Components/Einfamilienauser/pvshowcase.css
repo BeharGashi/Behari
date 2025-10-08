@@ -1,0 +1,136 @@
+/* Seksioni */
+.pv{
+  padding: 72px 20px 92px;
+  background:#fff;
+}
+.pv__inner{
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: clamp(24px, 5vw, 60px);
+  align-items: center;
+}
+
+/* Visuali majtas */
+.pv__visual{
+  position: relative;
+  /* përdor të njëjtën madhësi edhe si variabël */
+  --size: min(440px, 90vw);
+  width: var(--size);
+  aspect-ratio: 1 / 1;
+  margin-inline: auto;
+
+  /* parametra të orbitës */
+  --badge: 56px;
+  --R: calc(var(--size) * 0.6);    /* qendra e badge-it mbi vijën e pv__ring */
+
+  isolation: isolate;              /* krijo stacking context të pavarur */
+}
+
+/* unaza e jashtme me pika – POSHTË */
+.pv__ring{
+  position:absolute; inset: -10% -10% -10% -10%;
+  border: 3px dotted #D6B349;
+  border-radius: 50%;
+  opacity: .6;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* rrethi me foto – NË MES (mbi ring, poshtë orbitës) */
+.pv__circle{
+  position:absolute; inset: 6%;
+  border-radius: 50%;
+  box-shadow: 0 0 0 10px #eef1eb, inset 0 0 0 1px rgba(0,0,0,.06);
+  overflow: hidden;
+  background:#eee;
+  z-index: 2;                       /* <-- e ngrisim mbi ring */
+}
+.pv__circle img{
+  position:absolute; inset:0;       /* siguro që mbush gjithë rrethin */
+  width:100%; height:100%;
+  object-fit: cover; display:block;
+  animation: pv-fade .5s ease both;
+}
+
+/* ORBITA e badge-ve – SIPËR TË GJITHA */
+.pv__orbit{
+  position:absolute; inset:0;
+  transform: rotate(var(--rot, 0deg));
+  transform-origin: 50% 50%;
+  transition: transform .8s cubic-bezier(.2,.8,.2,1);
+  will-change: transform;
+  z-index: 3;                       /* <-- gjithmonë mbi ring & foto */
+}
+
+/* badge radial (si te varianti i fundit) */
+.pv__badge{
+  position:absolute;
+  left:50%; top:50%;
+  width: var(--badge); height: var(--badge);
+  border-radius:50%;
+  display:grid; place-items:center;
+  background:#D6B349; color:#15222B;
+  box-shadow: 0 10px 24px rgba(0,0,0,.15), 0 0 0 6px rgba(214,179,73,.25);
+  border:none; cursor:pointer;
+  opacity:.9; backface-visibility:hidden; will-change:transform;
+
+  transform:
+    translate(-50%, -50%)
+    rotate(var(--theta))
+    translateX(var(--R))
+    rotate(calc(-1 * (var(--theta) + var(--rot, 0deg))));
+  transition:
+    transform .8s cubic-bezier(.2,.8,.2,1),
+    box-shadow .25s ease,
+    opacity .25s ease;
+}
+.pv__badge:hover{
+  transform:
+    translate(-50%, -50%)
+    rotate(var(--theta))
+    translateX(var(--R))
+    rotate(calc(-1 * (var(--theta) + var(--rot, 0deg))))
+    scale(1.03);
+}
+.pv__badge.is-active{
+  box-shadow: 0 10px 24px rgba(0,0,0,.16), 0 0 0 8px rgba(214,179,73,.35);
+  opacity:1;
+}
+.pv__badge svg{ width:26px; height:26px; }
+
+/* HIQ POZICIONET E VJETRA manuale */
+/* .pv__badge--p1, .pv__badge--p2, .pv__badge--p3 { display:none; } */
+
+/* Djathtas – copy */
+.pv__eyebrow{
+  color:#D6B349; font-weight:800; letter-spacing:.04em; text-transform:uppercase;
+}
+.pv__title{
+  font-size: clamp(26px, 4vw, 44px);
+  line-height: 1.15; margin: 8px 0 8px; color: #15222B;
+}
+.pv__subtitle{
+  font-size: clamp(18px, 2.6vw, 22px);
+  margin: 8px 0 6px;
+  color: #15222B;
+}
+.pv__lead{
+  color: rgba(21,34,43,.85);
+  margin: 0 0 18px; max-width: 70ch;
+}
+
+/* nav dots */
+.pv__nav{ margin-top: 14px; display:flex; gap:10px; }
+.pv__navdot{
+  width:8px; height:8px; border-radius:999px; background:rgba(214,179,73,.35);
+  border:0; cursor:pointer; display: none;
+}
+.pv__navdot.is-active{ background:#D6B349; display: none;}
+
+/* Responsive */
+@media (max-width: 1050px){
+  .pv__inner{ grid-template-columns: 1fr; }
+  .pv__visual{ order: -1; }
+}

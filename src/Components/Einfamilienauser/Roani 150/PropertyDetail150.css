@@ -1,0 +1,147 @@
+/* Paleta lokale */
+.pd150 { --ink:#15222B; --accent:#D6B349; --muted:rgba(21,34,43,.65); }
+
+/* Kontejner */
+.pd150{
+  background: linear-gradient(180deg, #fff, #f9fbfc 60%, #fff);
+  color: var(--ink);
+  padding: clamp(24px,4vw,40px) 20px clamp(36px,5vw,56px);
+}
+.pd150__inner{
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Titles me accent line në të majtë */
+.pd150__title,
+.pd150__subtitle{
+  position: relative;
+  padding-left: 12px;
+  margin: 0 0 16px;
+  font-weight: 900;
+  color: var(--ink);
+}
+.pd150__title{ font-size: clamp(22px, 3.2vw, 28px); }
+.pd150__subtitle{ font-size: clamp(18px, 2.6vw, 22px); margin-top: 22px; }
+.pd150__title::before,
+.pd150__subtitle::before{
+  content:""; position:absolute; left:0; top:.25em; bottom:.25em;
+  width: 3px; border-radius:2px; background: var(--accent);
+}
+
+/* Box i detajeve (dy kolona) */
+.pd150__box{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: #eef4f6;
+  border: 1px solid rgba(21,34,43,.06);
+  border-radius: 10px;
+  padding: clamp(12px, 2.6vw, 18px);
+  box-shadow: 0 10px 24px rgba(0,0,0,.04) inset;
+}
+.pd150__col{ display:grid; gap: 14px; padding: 6px 10px; }
+.pd150__col--right{ border-left: 1px solid rgba(21,34,43,.12); }
+
+.pd150__row{ display:flex; justify-content: space-between; gap: 12px; }
+.pd150__key{ color: var(--muted); }
+.pd150__val{ font-weight: 700; color: var(--ink); }
+
+/* Features grid */
+.pd150__features{
+  display:grid;
+  grid-template-columns: repeat(4, minmax(0,1fr));
+  gap: 18px 22px;
+  margin-top: 16px;
+}
+.pd150__feat{ display:flex; align-items:center; gap:12px; }
+.pd150__ico{
+  width:44px; height:44px; border-radius:10px;
+  display:grid; place-items:center;
+  background: #fff;
+  border: 1px solid rgba(214,179,73,.45);
+  box-shadow: 0 6px 18px rgba(214,179,73,.25);
+  color: var(--accent);
+}
+.pd150__ico svg{ width:22px; height:22px; }
+.pd150__fcopy{ line-height:1.25; }
+.pd150__ftitle{ font-weight: 800; color: var(--ink); }
+.pd150__fsub{ color: var(--ink); font-size: 14px; display: none; }
+
+/* Responsive */
+@media (max-width: 900px){
+  .pd150__box{ grid-template-columns: 1fr; }
+  .pd150__col--right{ border-left: 0; border-top: 1px solid rgba(21,34,43,.12); padding-top: 16px; }
+  .pd150__features{ grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 520px){
+  .pd150__features{ grid-template-columns: 1fr; }
+}
+
+/* ===== Lightbox unik ===== */
+.pd150__lightbox{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.95);
+  z-index: 9999;
+  display: block;
+  animation: pd150-fade .18s ease both;
+}
+@keyframes pd150-fade { from{opacity:0} to{opacity:1} }
+
+/* container 100% ekran */
+.pd150__lbInner{
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+/* imazhi — mbush krejt ekranin pa u deformuar */
+.pd150__lbImg{
+  max-width: 100vw;
+  max-height: 100vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 0;
+  box-shadow: none;
+  animation: pd150-zoom .2s ease both;
+}
+@keyframes pd150-zoom { from{transform:scale(.985); opacity:.6} to{transform:scale(1); opacity:1} }
+
+/* butoni mbyll */
+.pd150__lbClose{
+  position:absolute; top:16px; right:16px;
+  width:40px; height:40px; border-radius:999px; border:0;
+  background:#D6B349; color:#15222B; font-size:24px; line-height:1;
+  box-shadow:0 8px 24px rgba(214,179,73,.35);
+  cursor:pointer;
+}
+
+/* navigimi në anët e ekranit */
+.pd150__lbNav{
+  position:absolute; top:50%; transform:translateY(-50%);
+  width:52px; height:52px; border-radius:999px; border:0;
+  background:#D6B349; color:#15222B; font-size:34px;
+  box-shadow:0 10px 26px rgba(214,179,73,.35);
+  cursor:pointer;
+}
+.pd150__lbNav--prev{ left:24px; }
+.pd150__lbNav--next{ right:24px; }
+
+/* caption opsional, poshtë në qendër */
+.pd150__lbCaption{
+  position:absolute; bottom:14px; left:50%; transform:translateX(-50%);
+  color:#fff; opacity:.85; font-size:14px;
+}
+
+/* mobile tweaks */
+@media (max-width: 680px){
+  .pd150__lbClose{ top:10px; right:10px; width:36px; height:36px; font-size:22px; }
+  .pd150__lbNav{ width:44px; height:44px; font-size:28px; }
+  .pd150__lbNav--prev{ left:10px; }
+  .pd150__lbNav--next{ right:10px; }
+}
