@@ -1,0 +1,63 @@
+.standards-section {
+  padding: 60px 20px;
+  background: #f4f4f4;
+}
+
+.standards-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20 20px;
+}
+
+.standard-card {
+  background: #113E67;
+  color: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  text-align: center;
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 10px 24px rgba(17, 62, 103, 0.12);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  margin: 0 10px;
+}
+
+.standard-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 34px rgba(17, 62, 103, 0.16);
+}
+
+.standard-icon {
+  font-size: 40px;
+  margin: 0 auto 12px;
+  color: #F5F5F5;
+}
+
+.standard-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.standard-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.standard-item {
+  margin-bottom: 6px;
+  font-size: 0.95rem;
+}
+
+/* Slick Dots Customization */
+.slick-dots li button:before {
+  color: #113E67;
+  font-size: 12px;
+}
+
+.slick-dots li.slick-active button:before {
+  color: C9A14A;
+}
