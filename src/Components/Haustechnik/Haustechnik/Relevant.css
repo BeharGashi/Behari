@@ -1,0 +1,135 @@
+/* ===== Relevant (Relevat component) – 8 Card Grid (no :root) ===== */
+
+.relev{
+  color: #15222B;                 /* punon mbi sfond të errët #15222B */
+  padding: 10px 0 0;                 /* respekton 30px spacing global nëse ka */
+  background-color: linear-gradient(180deg, whitesmoke 0%, #ffffff 100%);
+  padding-bottom: 50px;
+  padding-top: 30px;
+}
+.relev .container{
+  width: min(1240px, 92vw);
+  margin-inline: auto;
+  position: relative;
+  padding: 0;
+  display: block;
+}
+
+/* Heading me shimmer dhe gold sweep */
+.relev-title{
+  font-size: clamp(1.7rem, 1.6vw + 1rem, 2.2rem);
+  line-height: 1.08;
+  letter-spacing: .2px;
+  margin-bottom: 15;
+  background: linear-gradient(92deg, #15222B 0%, #15222B 40%, rgba(214,179,73,.92) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 10px 24px rgba(0,0,0,.25));
+  text-align: center;
+}
+.relev .gold-wipe{ position:relative; overflow:hidden; margin-bottom: .8rem; }
+.relev .gold-wipe::after{
+  content:""; position:absolute; inset:0;
+  background: rgba(214,179,73,.92);
+  transform: translateX(-101%);
+}
+.relev .gold-wipe.in-view::after{
+  animation: relev-wipe 1.05s cubic-bezier(.2,.7,.2,1) both;
+}
+@keyframes relev-wipe{
+  0%{ transform: translateX(-101%); }
+  50%{ transform: translateX(0%); }
+  100%{ transform: translateX(101%); }
+}
+
+/* Grid me 8 karta */
+.relev-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: clamp(16px, 1.8vw, 24px);
+}
+
+/* Kartat */
+.re-card{
+  border-radius: 16px;
+  border: 1px solid rgba(214,179,73,.35);
+  background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.02));
+  box-shadow: 0 22px 60px rgba(0,0,0,.38);
+  overflow: hidden;
+  transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease;
+  text-align: center;
+  isolation: isolate;
+}
+.re-card:hover{
+  transform: translateY(-6px);
+  border-color: rgba(214,179,73,.92);
+  box-shadow: 0 28px 68px rgba(0,0,0,.46);
+}
+
+/* Media on top */
+.re-media{
+  position: relative;
+  height: 180px;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(214,179,73,.25);
+}
+.re-media img{
+  width: 100%; height: 100%; object-fit: cover; display:block;
+  transform: scale(1.03);
+  transition: transform .6s ease;
+  filter: brightness(.95) contrast(1.05) saturate(1.04);
+  border-radius: 25px;
+}
+.re-card:hover .re-media img{ transform: scale(1.06); }
+
+/* Titles & text */
+.re-title{
+  margin: .8rem .9rem .3rem;
+  font-size: clamp(1.02rem, .5vw + .9rem, 1.18rem);
+  letter-spacing: .2px;
+  color: #15222B;
+}
+.re-title::after{
+  content:""; display:block; width:56px; height:2px; margin:.35rem auto 0;
+  border-radius:999px; background: rgba(214,179,73,.92); box-shadow: 0 0 12px rgba(214,179,73,.35);
+}
+.re-text{
+  margin: 0 .9rem 1.1rem;
+  color: #15222B;
+  font-size: .98rem;
+}
+
+/* Reveal animations (reuse) */
+.relev .photo-glide{ position:relative; overflow:hidden; }
+.relev .photo-glide::after{
+  content:""; position:absolute; inset:0;
+  background: rgba(214,179,73,.92);
+  transform: translateY(101%);
+}
+.relev .photo-glide.in-view::after{ animation: relev-glide 1.05s cubic-bezier(.2,.7,.2,1) both; }
+@keyframes relev-glide{
+  0%{ transform: translateY(101%); }
+  50%{ transform: translateY(0%); }
+  100%{ transform: translateY(-101%); }
+}
+
+.relev .stagger > *{ opacity:0; transform: translateY(14px); }
+.relev .stagger.in-view > *{ animation: relev-up .65s cubic-bezier(.2,.7,.2,1) forwards; }
+.relev .stagger.in-view > *:nth-child(1){ animation-delay:.05s; }
+.relev .stagger.in-view > *:nth-child(2){ animation-delay:.12s; }
+.relev .stagger.in-view > *:nth-child(3){ animation-delay:.19s; }
+.relev .stagger.in-view > *:nth-child(4){ animation-delay:.26s; }
+.relev .stagger.in-view > *:nth-child(5){ animation-delay:.33s; }
+.relev .stagger.in-view > *:nth-child(6){ animation-delay:.40s; }
+.relev .stagger.in-view > *:nth-child(7){ animation-delay:.47s; }
+.relev .stagger.in-view > *:nth-child(8){ animation-delay:.54s; }
+@keyframes relev-up{ from{opacity:0; transform: translateY(14px)} to{opacity:1; transform:none} }
+
+/* Responsive */
+@media (max-width: 640px){
+  .re-media{ height: 160px; }
+}
+
+.re-card { display:block; text-decoration:none; color:inherit; }
+.re-card:focus-visible { outline: 2px solid rgba(214,179,73,.92); outline-offset: 3px; }

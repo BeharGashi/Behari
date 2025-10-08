@@ -1,0 +1,235 @@
+/* ===== Natural Wohnbau – Hausmodelle (fix alignment + no extra scroll) ===== */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap');
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+html, body {
+  width: 100%;
+  margin: 0;
+  overflow-x: hidden;                 /* parandalon scroll horizontal */
+}
+
+body {
+  background: whitesmoke;
+  color: #1b1f23;
+  font-family: 'Poppins', -apple-system, Segoe UI, Roboto, Inter, Ubuntu, Arial, sans-serif;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Montserrat', 'Poppins', Arial, sans-serif;
+  word-wrap: break-word;
+}
+
+/* Shmang overflow nga seksionet e brendshme */
+section, article, header, footer { overflow-x: clip; }
+
+/* ---- Container i përgjithshëm ---- */
+.nw-container{
+  width: min(1200px, 100%);
+  margin-inline: auto;
+  padding: 0 clamp(12px, 3vw, 24px);
+}
+
+/* ---------- Hero ---------- */
+.nw-hero{
+  position: relative;
+  display: grid;                       /* centro me grid */
+  place-items: center;
+  background:
+    radial-gradient(1200px 500px at 80% -10%, rgba(214,179,73,0.18), transparent),
+    linear-gradient(160deg, #15222B 0%, #0f171c 60%, #0b1116 100%);
+  color: #ffffff;
+  overflow: hidden;
+  min-height: 90vh;                    /* fallback */
+}
+@supports (height: 100svh){ .nw-hero{ min-height: 100svh; } }
+
+.nw-hero-inner{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: clamp(32px, 6vh, 64px) 20px;/* padding i moderuar që nuk tejkalon viewportin */
+}
+
+.nw-eyebrow{
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,1);
+  font-size: clamp(.72rem, 1.4vw, .9rem);
+}
+.nw-hero h1{
+  margin: .4rem 0 1rem;
+  font-size: clamp(1.9rem, 4vw, 3rem);
+  line-height: 1.15;
+  text-align: center;
+  max-width: 90%;
+}
+.nw-hero p{
+  max-width: 760px;
+  margin: 0 auto;
+  color: rgba(255,255,255,1);
+  font-size: clamp(.98rem, 1.4vw, 1.08rem);
+  text-align: center;
+  padding: 0 10px;
+}
+
+/* ---------- Intro (align me grid-in) ---------- */
+.nw-intro{
+  padding: clamp(28px, 4vw, 40px) 0 clamp(12px, 1.6vw, 16px);
+}
+/* Heq gutter-in majtas/djathtas vetëm brenda intro-s që të bjerë njësoj si grid-i */
+.nw-intro > .nw-container{
+  padding-left: 0;
+  padding-right: 0;
+}
+.nw-intro h2{
+  font-size: clamp(1.25rem, 2.6vw, 2rem);
+  color: #15222B;
+  margin: 0 0 .5rem;
+}
+.nw-intro p{
+  color: #5e6b73;
+  max-width: 900px;
+  margin: 0;
+}
+
+/* ---------- Grid i kartave (mobile-first) ---------- */
+.nw-grid{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(16px, 2.5vw, 22px);
+  /* pa gutters anësore që të jetë flush me intro-n e rregulluar */
+  padding: clamp(12px, 1.6vw, 16px) 0 clamp(48px, 6vw, 64px);
+}
+
+.nw-card{
+  background: #ffffff;
+  border: 1px solid rgba(21,34,43,.06);
+  border-radius: 18px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 24px rgba(11,17,22,.06);
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+.nw-card:hover{ transform: translateY(-2px); box-shadow: 0 18px 36px rgba(11,17,22,.12); }
+
+/* Kolonat */
+@media (min-width: 600px){  .nw-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 900px){  .nw-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 1200px){ .nw-grid { grid-template-columns: repeat(3, 1fr); } }
+
+/* ---------- Media në karta ---------- */
+.nw-card-media{
+  aspect-ratio: 16/9;
+  background:
+    linear-gradient(180deg, rgba(21,34,43,.2), rgba(21,34,43,.6)),
+    url('') center/cover no-repeat;
+  display:flex;
+  align-items:flex-end;
+  justify-content:flex-start;
+  padding:14px;
+}
+@media (max-width: 520px){ .nw-card-media{ aspect-ratio: 4/3; } }
+.nw-badge{
+  background: rgba(214,179,73,.92);
+  color: white;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: .8rem;
+}
+
+/* ---------- Typo & meta ---------- */
+.nw-card-body{ padding: 18px; }
+.nw-card h3{
+  margin: .2rem 0 .4rem;
+  font-size: clamp(1.05rem, 1.8vw, 1.3rem);
+  color: #15222B;
+}
+.nw-card p{
+  margin: 0 0 .6rem;
+  color: #334249;
+  font-size: clamp(.95rem, 1.5vw, 1rem);
+}
+.nw-meta{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin: .4rem 0 1rem;
+}
+.nw-meta span{
+  font-size: clamp(.78rem, 1.4vw, .85rem);
+  color: #5c6b73;
+  background: rgba(214,179,73,.18);
+  padding: 6px 10px;
+  border-radius: 999px;
+}
+.nw-list{ margin: 0; padding: 0 0 0 18px; color:#3a4850; }
+.nw-list li{ margin: .24rem 0; font-size: clamp(0.9rem, 1.2vw, 1rem); }
+
+/* ---------- Split (USP) ---------- */
+.nw-split{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(16px, 2.2vw, 22px);
+  align-items:center;
+  padding: clamp(40px, 7vw, 64px) 0;
+  border-top: 1px solid rgba(21,34,43,.06);
+}
+@media (min-width: 768px){
+  .nw-split { grid-template-columns: 1.2fr .8fr; } /* fix i tipit ) */
+}
+.nw-slab{
+  background:#ffffff;
+  border:1px solid rgba(21,34,43,.06);
+  border-radius: 18px;
+  padding: clamp(16px, 2.2vw, 22px);
+}
+.nw-slab h4{ margin: .2rem 0 .6rem; color:#15222B; font-size: clamp(1rem, 1.8vw, 1.15rem); }
+.nw-slab p{ margin:.2rem 0; color:#3b4750; }
+.nw-kpis{
+  display:grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap:16px;
+  margin-top:12px;
+}
+@media (min-width: 480px){ .nw-kpis { grid-template-columns: repeat(3, 1fr); } }
+.nw-kpi{
+  background: linear-gradient(180deg, rgba(214,179,73,.06), rgba(214,179,73,.02));
+  border: 1px solid rgba(214,179,73,.25);
+  border-radius: 14px;
+  padding:16px;
+  text-align:center;
+}
+.nw-kpi b{ display:block; font-size: clamp(1.1rem, 2.2vw, 1.4rem); color:#15222B; }
+.nw-kpi span{ font-size: clamp(.78rem, 1.5vw, .85rem); color:#5b6870; }
+
+/* ---------- Mobile hero tweak ---------- */
+@media (max-width: 768px){
+  .nw-hero-inner{ padding: clamp(24px, 10vh, 56px) 20px; }
+  .nw-hero h1 { font-size: clamp(1.7rem, 6vw, 2.2rem); }
+}
+
+/* ---------- Aksesueshmëri ---------- */
+@media (prefers-reduced-motion: reduce){
+  *{
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Rregullim për tekstin shumë të gjatë */
+.nw-card h3,
+.nw-card p{
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
