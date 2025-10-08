@@ -1,0 +1,120 @@
+/* Sfondi i heros */
+.hero {
+  min-height: 90vh;
+  background-size: cover ;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.hero::before {
+  /* overlay i errët (opsional) për kontrast me tekstin */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(90% 70% at 15% 60%, rgba(21, 34, 43, 0.55), rgba(21, 34, 43,.62));
+}
+
+/* Layout */
+.hero__inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 48px;
+  padding-top: 100px;
+}
+
+.hero__text{
+    padding-top: 70px;
+}
+
+.hero__text h1 {
+  font-size: clamp(32px, 5vw, 64px);
+  line-height: 1.05;
+  color: #fff;
+  margin: 0 0 18px;
+  letter-spacing: .5px;
+}
+
+.hero__text p {
+  color: white;
+  font-size: clamp(16px, 1.5vw, 18px);
+  max-width: 46ch;
+  margin: 0 0 28px;
+}
+
+.btn {
+  background: #15222B;
+  color: #fff;
+  border: solid 1px #D6B349 ;
+  padding: 14px 22px;
+  border-radius: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(255,106,42,.25);
+}
+.btn:hover { transform: translateY(-1px); }
+
+/* Visuali djathtas */
+.hero__visual {
+  position: relative;
+  width: min(560px, 90vw);
+  aspect-ratio: 1 / 1;
+  margin-inline: auto;
+}
+
+/* Foto rrethore */
+.circle {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.circle::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(21, 34, 43, 0.25); /* overlay me transparencë */
+  z-index: 1; /* mbi imazh, poshtë harkut */
+  pointer-events: none; /* të mos bllokojë klikimet */
+}
+
+.circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  position: relative;
+  z-index: 0; /* imazhi poshtë overlay-t */
+}
+
+
+/* Harku i gjelbër që “vrapon” kur faqja hapet */
+.arc {
+  position: absolute;
+  inset: 0;
+  transform-origin: 50% 50%;
+  /* animimi: nga -210deg -> 0deg, si të po rrotullohet rreth rrethit */
+  animation: arc-sweep 1.6s cubic-bezier(.2,.9,.2,1) both;
+  /* pak “depth” */
+  filter: drop-shadow(0 6px 24px rgba(214,179,73,.35));
+}
+
+@keyframes arc-sweep {
+  0%   { transform: rotate(-210deg) scale(1.02); opacity: .0; }
+  35%  { opacity: 1; }
+  100% { transform: rotate(270deg) scale(1); }
+}
+
+/* Responsiviteti */
+@media (max-width: 900px) {
+  .hero__inner { grid-template-columns: 1fr; gap: 32px; }
+  .hero__text { text-align: left; }
+}
