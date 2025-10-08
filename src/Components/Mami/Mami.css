@@ -1,0 +1,233 @@
+/* ========== PALETË & WRAPPER ========== */
+.mastwrap{
+  --ink:#15222B;
+  --accent:#D6B349;
+  padding-bottom: 70px;
+}
+
+/* ========== KONTEJNERI KRYESOR (TEKSTI) ========== */
+.mast{
+  background:#fff;
+  color:var(--ink);
+  padding: 32px 20px;
+}
+.mast__inner{
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ========== HERO (klasa unike) ========== */
+.masthero{ margin: 0 0 12px; }
+.masthero__title{
+  margin: 0;
+  font-size: clamp(28px, 4.2vw, 44px);
+  line-height: 1.15;
+  font-weight: 900;
+  letter-spacing: .3px;
+  color: var(--ink);
+}
+.masthero__meta{
+  margin-top: 6px;
+  display:flex; align-items:center; gap:10px;
+  color: rgba(21,34,43,.70);
+  font-size: 15px;
+}
+.masthero__icon{ color: var(--accent); }
+.masthero__metatext{ line-height:1; }
+
+/* ========== SUMMARY (klasa unike) ========== */
+.mastsummary{ margin-top: 32px; }
+.mastsummary__heading{
+  position:relative;
+  margin:0 0 6px;
+  font-size: clamp(18px,2.4vw,22px);
+  font-weight: 800;
+  padding-left: 14px;
+  color: var(--ink);
+}
+.mastsummary__heading::before{
+  content:""; position:absolute; left:0; top:.2em; bottom:.2em;
+  width:3px; border-radius:2px; background: var(--accent);
+}
+.mastsummary__p{
+  margin: 0 0 10px;
+  color: rgba(21,34,43,.82);
+  line-height: 1.65;
+  font-size: clamp(15.5px, 1.7vw, 17px);
+}
+
+/* ========== DETAILS (klasa unike) ========== */
+.mastdetails{ margin-top: 32px; }
+.mastdetails__heading{
+  position:relative;
+  margin:0 0 6px;
+  font-size: clamp(18px,2.4vw,22px);
+  font-weight: 800;
+  padding-left: 14px;
+  color: var(--ink);
+}
+.mastdetails__heading::before{
+  content:""; position:absolute; left:0; top:.2em; bottom:.2em;
+  width:3px; border-radius:2px; background: var(--accent);
+}
+.mastdetails__p{
+  margin: 0 0 10px;
+  color: rgba(21,34,43,.82);
+  line-height: 1.65;
+  font-size: clamp(15.5px, 1.7vw, 17px);
+}
+
+/* ========== GALERIA (klasa unike) ========== */
+.magal{
+  background:#fff;
+  color:var(--ink);
+  padding: clamp(24px, 5vw, 48px) 20px;
+}
+.magal__inner{
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.magal__title{
+  position:relative;
+  margin: 0 0 16px;
+  padding-left: 12px;
+  font-size: clamp(20px, 3.2vw, 28px);
+  font-weight: 900;
+  color: var(--ink);
+}
+.magal__title::before{
+  content:"";
+  position:absolute; left:0; top:.25em; bottom:.25em;
+  width:3px; border-radius:2px; background: var(--accent);
+}
+
+/* Grid 2-kolona */
+.magal__grid{
+  display:grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-rows: 210px;
+  gap: 10px;
+}
+@media (max-width: 900px){
+  .magal__grid{
+    grid-template-columns: 1fr;
+    grid-auto-rows: 220px;
+  }
+}
+
+/* Kuti e imazhit */
+.magal__item{
+  position:relative;
+  overflow:hidden;
+  border-radius: 12px;
+  background:#f1f3f5;
+  box-shadow: 0 8px 24px rgba(0,0,0,.06);
+  cursor: zoom-in;
+  margin: 0;
+}
+.magal__item--tall{ grid-row: span 2; }
+@media (max-width: 900px){
+  .magal__item--tall{ grid-row: span 1; }
+}
+
+.magal__img{
+  width:100%;
+  height:100%;
+  object-fit: cover;
+  display:block;
+  transition: transform .35s ease;
+  will-change: transform;
+}
+.magal__item:hover .magal__img{ transform: scale(1.03); }
+
+/* ========== LIGHTBOX (klasa unike) ========== */
+.magal__lightbox{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.95);
+  z-index: 9999;
+  display: block;
+  animation: magal-fade .18s ease both;
+  overscroll-behavior: contain;
+}
+@keyframes magal-fade { from{opacity:0} to{opacity:1} }
+
+/* container 100% ekran */
+.magal__lbInner{
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  width: 100svw;            /* viewport i sigurt në mobile */
+  height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+/* imazhi */
+.magal__lbImg{
+  max-width: 100vw;
+  max-height: 100vh;
+  max-width: 100svw;
+  max-height: 100svh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 0;
+  box-shadow: none;
+  animation: magal-zoom .2s ease both;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+@keyframes magal-zoom { from{transform:scale(.985); opacity:.6} to{transform:scale(1); opacity:1} }
+
+/* butoni mbyll */
+.magal__lbClose{
+  position:absolute; top:16px; right:16px;
+  width:40px; height:40px; border-radius:999px; border:0;
+  background:#D6B349; color:#15222B; font-size:24px; line-height:1;
+  box-shadow:0 8px 24px rgba(214,179,73,.35);
+  cursor:pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* navigimi */
+.magal__lbNav{
+  position:absolute; top:50%; transform:translateY(-50%);
+  width:52px; height:52px; border-radius:999px; border:0;
+  background:#D6B349; color:#15222B; font-size:34px;
+  box-shadow:0 10px 26px rgba(214,179,73,.35);
+  cursor:pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.magal__lbNav--prev{ left:24px; }
+.magal__lbNav--next{ right:24px; }
+
+/* caption */
+.magal__lbCaption{
+  position:absolute; bottom:14px; left:50%; transform:translateX(-50%);
+  color:#fff; opacity:.85; font-size:14px;
+}
+
+/* Focus ring për tastierë */
+.magal__lbClose:focus-visible,
+.magal__lbNav:focus-visible{
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .magal__img{ transition: none; }
+  .magal__lightbox{ animation: none; }
+  .magal__lbImg{ animation: none; }
+}
+
+/* mobile tweaks */
+@media (max-width: 680px){
+  .magal__lbClose{ top:10px; right:10px; width:36px; height:36px; font-size:22px; }
+  .magal__lbNav{ width:44px; height:44px; font-size:28px; }
+  .magal__lbNav--prev{ left:10px; }
+  .magal__lbNav--next{ right:10px; }
+}
