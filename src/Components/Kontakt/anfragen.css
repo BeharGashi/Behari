@@ -1,0 +1,262 @@
+/* =========================================================
+   NATURAL Wohnbau – Anfrage (UI clean + unified spacing)
+========================================================= */
+.inq{
+  /* Palette */
+  --ink:        #15222B;
+  --muted:      rgba(21,34,43,.72);
+  --accent:     #D6B349;
+  --line:       #E6EBEF;
+  --card:       #FFFFFF;
+  --bg:         #F7F9FB;
+  --err:        #C0392B;
+
+  /* Spacing & radius */
+  --s-1: 8px;   --s-2: 12px;  --s-3: 16px;  --s-4: 20px;  --s-5: 24px;  --s-6: 32px;
+  --r-sm: 8px;  --r-md: 12px; --r-lg: 16px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 0 rgba(0,0,0,.02);
+  --shadow-md: 0 12px 28px rgba(20,30,40,.06);
+  --shadow-focus: 0 0 0 4px rgba(214,179,73,.20);
+
+  margin-top: 50px;
+  background: #fff;
+  color: var(--ink);
+  padding: clamp(24px, 4vw, 48px) 20px clamp(40px, 6vw, 64px);
+}
+.inq__inner{ max-width:1200px; margin:0 auto; }
+
+/* =============================
+   STEPPER
+============================= */
+.inq__steps{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--s-2) var(--s-3);
+  margin: 0 0 clamp(16px, 3vw, 28px);
+  padding: 0;
+  list-style:none;
+}
+.inq__step{
+  display:flex; align-items:center; gap:var(--s-2);
+  padding: var(--s-2) var(--s-3);
+  background: var(--bg);
+  border:1px solid var(--line);
+  border-radius: var(--r-md);
+  transition: box-shadow .2s ease, border-color .2s ease, background-color .2s ease;
+}
+.inq__stepNum{
+  inline-size:28px; block-size:28px;
+  border-radius: 999px;
+  display:grid; place-items:center;
+  font-weight:700; font-size:14px;
+  color:var(--ink);
+  background:#EEF2F5;
+  border:2px solid #DFE6EC;
+}
+.inq__stepLabel{ font-weight:700; font-size:14.5px; color:var(--muted); }
+.inq__step.is-current{
+  border-color: rgba(214,179,73,.45);
+  box-shadow: 0 4px 14px rgba(214,179,73,.15);
+  background: #FFF9E8;
+}
+.inq__step.is-current .inq__stepNum{ background:var(--accent); border-color:transparent; color:var(--ink); }
+.inq__step.is-done{ opacity:.9; }
+.inq__step.is-done .inq__stepNum{ background:var(--accent); color:var(--ink); border-color:transparent; }
+
+/* =============================
+   CARD + TITULLI
+============================= */
+.inq__card{
+  background: var(--card);
+  border:1px solid var(--line);
+  border-radius: var(--r-lg);
+  padding: clamp(16px, 3.2vw, 28px);
+  box-shadow: var(--shadow-md);
+}
+.inq__legend{
+  margin:0 0 var(--s-2);
+  font-weight:900;
+  font-size: clamp(18px, 2.4vw, 24px);
+}
+.inq__muted{ color: var(--muted); }
+
+/* =============================
+   FORM GRIDS (uniform + responsive)
+============================= */
+.inq__grid{
+  --min: 400px;
+  --gap-x: 15px;   /* horizontal */
+  --gap-y: 15px;   /* vertical   */
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(var(--min), 1fr));
+  gap: var(--gap-y) var(--gap-x);
+}
+.inq__grid--addr{ margin-top: var(--s-1); }
+.inq__grid--two{ --min: 320px; }
+.inq__col2{ grid-column: 1 / -1; }
+.inq__grid > .inq__field{ min-width:0; }
+
+/* =============================
+   FIELDS (uniform)
+============================= */
+.inq__field{ display:flex; flex-direction:column; gap: 12px; }
+.inq__field > span{
+  font-size:13px; font-weight:700; color:var(--muted); letter-spacing:.02em;
+}
+.inq__field input,
+.inq__field select,
+.inq__field textarea{
+  appearance:none; width:auto;
+  border:1.5px solid #D8DEE6;
+  background:#fff; border-radius:10px;
+  padding: 12px 14px; font: inherit; color: var(--ink);
+  transition: border-color .2s ease, box-shadow .2s ease, background-color .2s ease;
+}
+.inq__field textarea{ min-height:120px; resize:vertical; line-height:1.45; }
+.inq__field input::placeholder,
+.inq__field textarea::placeholder{ color:#9AA7B2; }
+
+.inq__field:focus-within input,
+.inq__field:focus-within select,
+.inq__field:focus-within textarea{
+  border-color: var(--accent);
+  background:#FFFDF6;
+  box-shadow: var(--shadow-focus);
+  outline: none;
+}
+
+/* =============================
+   CHOICE (checkbox + radio UNIFIED)
+============================= */
+.inq__radRow, .inq__radios{
+  display:flex; flex-wrap:wrap; gap: 12px 26px;
+  margin-top: 6px;
+}
+
+.inq__choice, .inq__check, .inq__radio{
+  --s: 20px;         /* madhësia e ikonës */
+  --br: 6px;         /* radius i njëjtë për të dy llojet (vendose 999px për rreth) */
+  display:inline-flex; align-items:center; gap:10px;
+  cursor:pointer; user-select:none;
+  font-size:15px; color:var(--ink);
+  margin:8px 24px 8px 0; position:relative;
+}
+
+/* input i fshehur */
+.inq__choice input,
+.inq__check input,
+.inq__radio input{
+  position:absolute; opacity:0; pointer-events:none;
+}
+
+/* kutia vizuale (e njëjtë për të dy) */
+.inq__choice i,
+.inq__check i,
+.inq__radio i{
+  width:var(--s); height:var(--s);
+  min-width:var(--s); min-height:var(--s);
+  border-radius: var(--br);
+  display:inline-flex; align-items:center; justify-content:center;
+  background:#fff; border:1.5px solid #CFD8E2;
+  transition: all .2s ease; box-shadow: var(--shadow-sm);
+}
+
+/* gjendja checked (e njëjtë për të dy) */
+.inq__choice input:checked + i,
+.inq__check input:checked + i,
+.inq__radio input:checked + i{
+  background: var(--accent);
+  border-color: transparent;
+  box-shadow: 0 6px 16px rgba(214,179,73,.28);
+}
+
+/* shenja ✓ (e njëjtë për të dy) */
+.inq__choice input:checked + i::before,
+.inq__check input:checked + i::before,
+.inq__radio input:checked + i::before{
+  content:"";
+  width:10px; height:6px;
+  border-left:2px solid var(--ink);
+  border-bottom:2px solid var(--ink);
+  transform: translateY(-1px) rotate(-45deg);
+}
+
+/* fokus i qartë */
+.inq__choice input:focus + i,
+.inq__check input:focus + i,
+.inq__radio input:focus + i{
+  box-shadow: var(--shadow-focus);
+  border-color: var(--accent);
+}
+
+/* =============================
+   Subgroups & titles
+============================= */
+.inq__subgroup{ margin-top: var(--s-3); padding-top: var(--s-2); border-top:1px dashed var(--line); }
+.inq__label{ display:block; margin:0 0 var(--s-1); font-weight:800; color:var(--ink); }
+.inq__fieldsetTitle{ margin: var(--s-2) 0 var(--s-1); font-weight:900; font-size:16px; color:var(--ink); }
+.inq__subheading{ font-weight:700; color:var(--ink); margin: var(--s-2) 0 var(--s-1); font-size:15px; }
+
+.inq__list{ margin: var(--s-2) 0 var(--s-2) 1.2rem; padding: 0; color: var(--ink); }
+.inq__list li{ margin: 6px 0; }
+
+/* =============================
+   ERRORS
+============================= */
+.inq__err{ color: var(--err); font-size: 12.5px; margin-top:4px; }
+
+/* =============================
+   ACTIONS
+============================= */
+.inq__actions{
+  display:flex; gap: var(--s-2); justify-content:flex-end;
+  margin-top: clamp(16px, 3vw, 24px);
+}
+.inq__btn{
+  appearance:none; border:0;
+  background: var(--accent); color: var(--ink);
+  font-weight:800; padding: 12px 18px; border-radius: 999px; cursor:pointer;
+  box-shadow: 0 10px 20px rgba(214,179,73,.22);
+  transition: transform .12s ease, box-shadow .12s ease, filter .12s ease;
+}
+.inq__btn:hover{ transform: translateY(-1px); }
+.inq__btn:active{ transform: translateY(0); box-shadow: 0 6px 14px rgba(214,179,73,.24); }
+.inq__btn[disabled]{ opacity:.55; cursor:not-allowed; filter:grayscale(.1); }
+.inq__btn--ghost{ background:#fff; color:var(--ink); border:2px solid var(--accent); box-shadow:none; }
+
+/* =============================
+   Option grids (Haustyp)
+============================= */
+.inq__options{
+  --min: 230px;
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(var(--min), 1fr));
+  gap: 12px 22px;
+  margin-top: var(--s-1);
+}
+.inq__option{ padding: 8px 0; }
+
+/* =============================
+   RESPONSIVE
+============================= */
+@media (max-width: 900px){
+  .inq__steps{ grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
+  .inq__grid{ --min: 260px; }
+}
+@media (max-width: 640px){
+  .inq__steps{ grid-template-columns: 1fr; }
+  .inq__grid{ --min: 100%; --gap-x: 15px; --gap-y: 15px; }
+  .inq__options{ --min: 100%; }
+  .inq__radRow, .inq__radios{ gap: 10px 18px; }
+  .inq__choice, .inq__check, .inq__radio{ --s:22px; margin:8px 16px 8px 0; }
+
+  /* Butonat full-width + stacked */
+  .inq__actions{ flex-wrap: wrap; gap: 10px; }
+  .inq__btn{ width:100%; }
+  .inq__btn--ghost{ order:-1; }
+}
+
+/* Detaje të vogla */
+.inq__field sup{ font-size:.75em; vertical-align: super; }
