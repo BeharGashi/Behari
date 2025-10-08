@@ -1,0 +1,163 @@
+/* Datenschutz.css */
+:root {
+  --charcoal: #2B2B2B;
+  --beige: #D9C5B2;
+  --gold: #C9A14A;
+  --white: #F5F5F5;
+}
+
+/* ====== Container ====== */
+.datenschutz-container {
+  color: var(--charcoal);
+  background: var(--white);
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: clamp(20px, 4vw, 48px) clamp(16px, 3vw, 32px) 64px;
+  line-height: 1.7;
+}
+
+/* ====== Header Kryesor ====== */
+.datenschutz-header {
+  font-size: clamp(28px, 5.2vw, 56px);
+  line-height: 1.1;
+  margin: 0 0 18px;
+  color: var(--charcoal);
+  letter-spacing: 0.2px;
+  position: relative;
+}
+
+.datenschutz-header::after {
+  content: "";
+  display: block;
+  width: 84px;
+  height: 4px;
+  margin-top: 12px;
+  background: linear-gradient(90deg, var(--gold), rgba(201, 161, 74, 0.35));
+  border-radius: 3px;
+}
+
+/* ====== Seksionet ====== */
+.datenschutz-section {
+  padding: 18px 0 8px;
+  border-top: 1px solid rgba(43, 43, 43, 0.08);
+}
+
+.datenschutz-section:first-of-type {
+  border-top: none;
+  padding-top: 8px;
+}
+
+.section-header {
+  font-size: clamp(20px, 3vw, 28px);
+  color: var(--gold);
+  margin: 32px 0 10px;
+  letter-spacing: 0.3px;
+}
+
+.subsection-header {
+  font-size: clamp(16px, 2.2vw, 20px);
+  color: var(--charcoal);
+  margin: 22px 0 8px;
+  padding-left: 10px;
+  border-left: 3px solid var(--gold);
+}
+
+/* ====== Teksti ====== */
+.datenschutz-section p {
+  margin: 0 0 14px;
+  color: #353535;
+}
+
+.highlight-text {
+  color: var(--gold);
+  font-weight: bold;
+}
+
+/* ====== Adresa ====== */
+.company-address {
+  font-style: normal;
+  background: rgba(217, 197, 178, 0.15);
+  border: 1px solid rgba(201, 161, 74, 0.35);
+  padding: 14px 16px;
+  border-radius: 12px;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.06);
+  max-width: 720px;
+}
+
+/* ====== Lista ====== */
+.datenschutz-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 8px 0 0;
+}
+
+.datenschutz-list li {
+  position: relative;
+  padding-left: 22px;
+  margin: 8px 0;
+}
+
+.datenschutz-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.7em;
+  width: 8px;
+  height: 8px;
+  background: var(--gold);
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px rgba(201, 161, 74, 0.15);
+}
+
+/* ====== Linket ====== */
+.external-link {
+  color: var(--charcoal);
+  text-decoration: none;
+  border-bottom: 1px dashed rgba(201, 161, 74, 0.6);
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.external-link:hover,
+.external-link:focus {
+  color: var(--gold);
+  border-color: var(--gold);
+  background: rgba(201, 161, 74, 0.08);
+  outline: none;
+}
+
+/* ====== Responsiviteti ====== */
+@media (max-width: 768px) {
+  .company-address {
+    padding: 12px;
+  }
+}
+
+/* ====== Print-friendly ====== */
+@media print {
+  :root {
+    --charcoal: #000;
+    --gold: #000;
+  }
+
+  .datenschutz-container {
+    background: #fff;
+    color: #000;
+    padding: 0;
+    max-width: 100%;
+  }
+
+  .company-address {
+    background: #fff;
+    border: 1px solid #000;
+    box-shadow: none;
+  }
+
+  .datenschutz-header::after {
+    background: #000;
+  }
+
+  .external-link {
+    color: #000;
+    border-bottom: 1px solid #000;
+  }
+}
