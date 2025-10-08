@@ -1,0 +1,113 @@
+/* Rechtliche.css */
+:root{
+  --charcoal:#2B2B2B;
+  --beige:#D9C5B2;
+  --gold:#C9A14A;
+  --white:#F5F5F5;
+}
+
+/* ====== Container ====== */
+.rechtliche-container{
+  color: var(--charcoal);
+  background: var(--white);
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: clamp(20px,4vw,48px) clamp(16px,3vw,32px) 64px;
+  line-height: 1.7;
+}
+
+/* ====== Header kryesor ====== */
+.rechtliche-header{
+  font-size: clamp(28px,5.2vw,56px);
+  line-height: 1.1;
+  margin: 0 0 18px;
+  color: var(--charcoal);
+  letter-spacing: .2px;
+  position: relative;
+}
+.rechtliche-header::after{
+  content:"";
+  display:block;
+  width:84px;
+  height:4px;
+  margin-top:12px;
+  background: linear-gradient(90deg, var(--gold), rgba(201,161,74,.35));
+  border-radius:3px;
+}
+
+/* ====== Seksionet ====== */
+.rechtliche-section{
+  padding: 18px 0 8px;
+  border-top: 1px solid rgba(43,43,43,.08);
+}
+.rechtliche-section:first-of-type{
+  border-top:none;
+  padding-top:8px;
+}
+
+.section-header{
+  font-size: clamp(20px,3vw,28px);
+  color: var(--gold);
+  margin: 32px 0 10px;
+  letter-spacing: .3px;
+}
+
+/* Teksti i paragrafëve */
+.rechtliche-section p{
+  margin: 0 0 14px;
+  color:#353535; /* pak më i butë për lexim më të mirë */
+}
+
+/* Opsional: stil “card” për seksione specifike */
+.rechtliche-section.card{
+  background: rgba(217,197,178,.15);
+  border: 1px solid rgba(201,161,74,.35);
+  border-radius: 12px;
+  padding: 18px 16px;
+  box-shadow: 0 10px 26px rgba(0,0,0,.06);
+}
+
+/* Linke brenda tekstit (nëse shtohen) */
+.rechtliche-container a{
+  color: var(--charcoal);
+  text-decoration: none;
+  border-bottom: 1px dashed rgba(201,161,74,.6);
+  transition: color .2s ease, border-color .2s ease, background .2s ease;
+}
+.rechtliche-container a:hover,
+.rechtliche-container a:focus{
+  color: var(--gold);
+  border-color: var(--gold);
+  background: rgba(201,161,74,.08);
+  outline: none;
+}
+
+/* Aksesibiliteti */
+.rechtliche-container :where(a,button,[tabindex]):focus-visible{
+  outline: 2px dashed var(--gold);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* Responsiviteti */
+@media (max-width:768px){
+  .rechtliche-container{ padding-bottom: 48px; }
+  .rechtliche-section.card{ padding:14px 12px; }
+}
+
+/* Print-friendly */
+@media print{
+  :root{ --charcoal:#000; --gold:#000; }
+  .rechtliche-container{
+    background:#fff; color:#000;
+    padding:0; max-width:100%;
+  }
+  .rechtliche-header::after{ background:#000; }
+  .rechtliche-section{ border-color:#000; }
+  .rechtliche-section.card{
+    background:#fff; border:1px solid #000; box-shadow:none;
+  }
+  .rechtliche-container a{
+    color:#000; border-bottom:1px solid #000;
+  }
+}
