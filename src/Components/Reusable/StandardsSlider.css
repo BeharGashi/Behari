@@ -1,0 +1,144 @@
+/* Sfondi & container */
+.stds-section {
+  position: relative;
+  background: #2c3e44; /* ngjyra bazë */
+  color: #fff;
+  overflow: hidden;
+  padding: 30px 20px;
+}
+@media (min-width: 1024px) { .stds-section { padding: 50px 32px; } }
+
+.stds-glow {
+  position: absolute; inset: auto -16% -20% auto;
+  width: 70vw; height: 70vw; max-width: 1000px; max-height: 1000px;
+  background: radial-gradient(55% 55% at 70% 70%, rgba(214,179,73,.20) 0%, transparent 58%);
+  filter: blur(36px); opacity: .35; pointer-events: none;
+  animation: stdsGlow 14s ease-in-out infinite alternate;
+}
+@keyframes stdsGlow { from { transform: translate3d(0,0,0) scale(1) } to { transform: translate3d(12px,10px,0) scale(1.06) } }
+
+.stds-container { margin: 0 auto; max-width: 1200px; }
+
+/* Header */
+.stds-head { margin-bottom: 28px; display: flex; flex-direction: column; align-items: center; }
+.stds-eyebrow {
+  display: inline-block; padding: 6px 12px; border-radius: 999px;
+  border: 1px solid rgba(214,179,73,.4); background: rgba(214,179,73,.14);
+  color: white; font-weight: 700; letter-spacing: .04em;
+}
+.stds-title {
+  margin: 12px 0 0; font-weight: 800; line-height: 1.12; text-align: center;
+  font-size: clamp(28px, 3.8vw, 46px); color: #fff;
+}
+
+/* Slider */
+.stds-slider { position: relative; }
+
+/* track me scroll-snap (swipe në mobile) */
+.stds-track {
+  display: flex; gap: 20px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;          /* Firefox */
+}
+.stds-track::-webkit-scrollbar { display: none; } /* Chrome/Safari */
+
+.stds-panel {
+  flex: 0 0 100%;                 /* çdo panel = gjerësi e plotë */
+  scroll-snap-align: start;
+  display: grid; gap: 20px;
+  grid-template-columns: 1fr;     /* default mobile */
+  padding: 6px;
+}
+@media (min-width: 768px) {
+  .stds-panel--cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .stds-panel--cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+/* Karta */
+.stds-card {
+  background: #ffffff; color: #2c3e44;
+  border: 1px solid rgba(44,62,68,.12);
+  border-radius: 18px;
+  padding: 22px 18px;
+  box-shadow: 0 12px 30px rgba(0,0,0,.18);
+  transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+  display: flex; flex-direction: column; gap: 14px;
+  text-align: center;
+}
+.stds-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(214,179,73,.45);
+  box-shadow: 0 18px 42px rgba(0,0,0,.28), 0 0 0 6px rgba(214,179,73,.06) inset;
+}
+
+/* Koka e kartës: badge + titulli */
+.stds-card-head {
+  display: flex;
+  flex-direction: column;   /* ✅ ikona sipër, titulli poshtë */
+  align-items: center;      /* ✅ qendërzim horizontal */
+  gap: 12px;                /* hapësirë mes ikonës dhe titullit */
+}
+.stds-badge {
+  display: grid; place-items: center;
+  width: 52px;              /* (ishte 44px) – duket më premium */
+  height: 52px;
+  border-radius: 999px;
+  background: rgba(214,179,73,.15);
+  border: 1px solid rgba(214,179,73,.55);
+  color: #2c3e44;
+}
+
+.stds-card-title {
+  margin: 0;
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 1.2;
+  color: #2c3e44;
+  text-align: center;       /* ✅ siguro qendërzimin */
+}
+
+/* Lista */
+.stds-list { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+.stds-list li {
+  position: relative; padding-left: 16px; font-size: 16px; line-height: 1.65;
+}
+.stds-list li::before {
+  content: ""; position: absolute; left: 0; top: .6em;
+  width: 6px; height: 6px; border-radius: 999px; background: #D6B349; display: none;/* bullet gold */
+}
+
+/* Shigjetat */
+.stds-nav {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 42px; height: 42px; border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.55); background: rgba(255,255,255,.08);
+  color: #fff; font-size: 22px; display: grid; place-items: center; z-index: 5;
+  transition: background-color .2s ease, transform .2s ease, border-color .2s ease;
+}
+.stds-nav--prev { left: -6px; }
+.stds-nav--next { right: -6px; }
+@media (min-width: 1280px) {
+  .stds-nav--prev { left: -14px; display: none;}
+  .stds-nav--next { right: -14px; display: none; }
+}
+.stds-nav:hover { transform: translateY(-50%) scale(1.05); background: rgba(214,179,73,.22); border-color: #D6B349; }
+
+/* Dots */
+.stds-dots {
+  margin: 18px 0 0; padding: 0; list-style: none;
+  display: flex; gap: 8px; align-items: center; justify-content: center;
+}
+.stds-dot {
+  width: 8px; height: 8px; border-radius: 999px; border: none; cursor: pointer;
+  background: rgba(255,255,255,.35);
+  transition: transform .2s ease, background-color .2s ease;
+}
+.stds-dot.is-active { background: #D6B349; transform: scale(1.15); }
+.stds-dot:focus-visible { outline: 2px solid #D6B349; outline-offset: 3px; border-radius: 999px; }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .stds-badge, .stds-card, .stds-nav, .stds-dot, .stds-glow { transition: none; animation: none; }
+}

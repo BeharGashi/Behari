@@ -1,0 +1,127 @@
+/* -------- Individuelle Konzeption – Features (LIGHT • framed thumbnails) -------- */
+.nwh-features,
+.nwh-features * { box-sizing: border-box; }
+
+.nwh-features {
+  background: #ffffff;
+  color: #15222b;
+  padding: 30px 20px;
+}
+
+.nwh-container {
+  width: min(1200px, 100%);
+  margin: 0 auto;
+}
+
+.nwh-header {
+  margin-bottom: 1rem;
+  text-align: center;           /* qendro tekstin */
+  display: flex;                /* qendro edhe si layout */
+  flex-direction: column;
+  align-items: center;          /* qendro elementët horizontalisht */
+}
+
+.nwh-title {
+  font-family: "Montserrat","Poppins",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: .2px;
+  margin: 0 auto .5rem;         /* qendro bllokun e titullit */
+}
+
+.nwh-subtitle {
+  font-family: "Poppins",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  font-size: clamp(.98rem, 1.2vw, 1.05rem);
+  color: rgba(21,34,43,.85);
+  margin: 0 auto;               /* qendro nën-titullin si bllok */
+  max-width: 72ch;
+  text-align: center;           /* sigurohu që është në mes */
+}
+/* Grid: 3 / 2 / 1 */
+.nwh-features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: clamp(14px, 2vw, 18px);
+  margin-top: 1rem;
+}
+
+/* Karta */
+.nwh-feature-box {
+  background: linear-gradient(rgba(214,179,73,.15));
+  border: 1px solid rgba(21,34,43,.12);
+  border-radius: 18px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.06);
+  padding: 14px 14px 16px;
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+  opacity: 0; transform: translateY(12px);
+  animation: nwh-fadeUp .6s ease-out .05s forwards;
+}
+.nwh-feature-box:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 36px rgba(0,0,0,.08);
+  border-color: #d6b349;
+}
+
+/* ---------- Thumbnails për PNG me vija të bardha (framed) ---------- */
+.nwh-feature-box img {
+  display: block;
+  margin: 8px auto 12px;             /* qendërzim i imazhit */
+  width: min(88%, 360px);            /* kufizo gjerësinë */
+  height: clamp(90px, 12vw, 130px);  /* lartësi e ulët */
+  object-fit: contain;               /* ruaj raportin */
+
+  /* panel + kornizë e artë shumë e butë */
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: linear-gradient(180deg, rgba(21,34,43,1));
+  border: 1px solid rgba(214,179,73,.45);
+  box-shadow: 0 6px 16px rgba(0,0,0,.05);
+
+  /* thekso vijat e bardha të PNG-së */
+  filter:
+    drop-shadow(0 0 0.8px rgba(21,34,43,.35))
+    drop-shadow(0 2px 2px rgba(21,34,43,.08));
+  image-rendering: -webkit-optimize-contrast;
+
+  transition: transform .35s cubic-bezier(.2,.8,.2,1), filter .35s ease;
+}
+.nwh-feature-box:hover img {
+  transform: translateY(-2px);
+  filter:
+    drop-shadow(0 0 1px rgba(21,34,43,.4))
+    drop-shadow(0 3px 4px rgba(21,34,43,.10))
+    saturate(108%);
+}
+
+/* Titulli & teksti */
+.nwh-feature-box h3 {
+  font-family: "Montserrat","Poppins",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  font-size: clamp(1.02rem, 1.3vw, 1.18rem);
+  font-weight: 700;
+  line-height: 1.25;
+  margin: 4px 2px 6px;
+  color: #15222b;
+  text-align: center;
+}
+.nwh-feature-box p {
+  font-family: "Poppins",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  font-size: clamp(.95rem, 1.1vw, 1rem);
+  line-height: 1.6;
+  color: rgba(21,34,43,.85);
+  margin: 0;
+  text-align: center;
+}
+
+/* Animim i butë */
+@keyframes nwh-fadeUp { to { opacity: 1; transform: translateY(0); } }
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .nwh-features-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+}
+@media (max-width: 640px) {
+  .nwh-features { padding: 30px 16px; }
+  .nwh-features-grid { grid-template-columns: 1fr; }
+  .nwh-feature-box img { height: clamp(100px, 38vw, 150px); }
+}

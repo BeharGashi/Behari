@@ -1,0 +1,72 @@
+/* -------- Partners (LIGHT) -------- */
+.nwh-partners,
+.nwh-partners * { box-sizing: border-box; }
+
+.nwh-partners {
+  background-color: #ffffff;
+  text-align: center;
+  padding-block: clamp(2rem, 6vw, 4rem);
+  padding-inline: clamp(1rem, 4vw, 2rem);
+  color: #15222b;
+}
+
+.nwh-container {
+  width: min(1200px, 100%);
+  margin: 0 auto;
+}
+
+/* Title */
+.nwh-partners h2 {
+  font-family: "Montserrat", "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  font-size: clamp(1.5rem, 3.2vw + 0.5rem, 2.5rem);
+  margin-bottom: clamp(1rem, 4vw, 2rem);
+  font-weight: 800;
+  color: #15222b;
+  text-wrap: balance;
+}
+
+/* Swiper container */
+.nwh-partner-swiper {
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-block: .25rem;
+}
+
+/* Center content inside each slide */
+.nwh-partner-slide,
+.nwh-partner-swiper .swiper-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Logo image */
+.nwh-partner-swiper img {
+  width: min(100%, clamp(90px, 18vw, 150px));
+  height: clamp(32px, 6vw, 80px);
+  object-fit: contain;
+  filter: grayscale(100%);
+  opacity: .7;
+  transition: transform .3s ease, filter .3s ease, opacity .3s ease;
+}
+
+/* Hover vetëm në pajisje me maus */
+@media (hover: hover) and (pointer: fine) {
+  .nwh-partner-swiper img:hover {
+    transform: scale(1.08);
+    filter: grayscale(0%);
+    opacity: 1;
+  }
+}
+
+/* Focus accessibility për linkun rreth logos */
+.nwh-partner-swiper a:focus-visible {
+  outline: 2px solid rgba(21,34,43,.4);
+  outline-offset: 4px;
+  border-radius: 10px;
+}
+
+/* Optional: pak hapësirë mes rreshtit të logos në mobile (kur slidesPerView:2/3) */
+@media (max-width: 639px) {
+  .nwh-partner-swiper { gap: 0; }
+}

@@ -1,0 +1,141 @@
+/* ====== Tokens të skopuar te seksioni + spacing ====== */
+.nwh-bauweisen {
+  /* Paleta */
+  --primary-color: #082C38;
+  --primary-light: rgba(8, 44, 56, 0.1);
+  --secondary-color: #4ea674;
+  --text-dark: #15222B;                 /* MUNGOI */
+  --text-color: #333;
+  --text-light: #555;
+  --text-secondary: rgba(255,255,255,0.85);  /* MUNGOI */
+  --light-bg: #f9f9f9;
+  --light-gray: #f8f8f8;
+  --white: #ffffff;
+  --off-white: #fae9d7;
+
+  /* UI */
+  --shadow-sm: 0 0.125rem 0.25rem rgba(0,0,0,0.1);
+  --shadow-md: 0 0.25rem 0.75rem rgba(0,0,0,0.1);
+  --shadow-lg: 0 0.5rem 1.5rem rgba(0,0,0,0.15);
+
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --space-xl: 2.5rem;
+  --space-xxl: 4rem;
+
+  --text-base: 1rem;
+  --text-sm: 0.875rem;
+  --text-md: 1.125rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.5rem;
+  --text-xxl: 1.75rem;
+  --text-xxxl: 2rem;
+  --text-display: 2.5rem;
+
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1.5rem;
+
+  --transition: all 0.3s ease;
+
+  background-color: var(--light-gray);
+  padding: var(--space-xl) var(--space-md);
+}
+
+.nwh-bauweisen-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ====== Heading ====== */
+.nwh-bauweisen-heading {
+  font-size: clamp(28px, 3.6vw, 35px);
+  font-weight: 700;
+  color: var(--text-dark);
+  text-align: center;
+  margin-bottom: var(--space-xl);
+  margin-top: 20px;
+}
+
+/* ====== Grid ====== */
+.nwh-bauweisen-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-xl);
+}
+
+/* ====== Card ====== */
+.nwh-bauweisen-card {
+  background-color: var(--primary-color);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+  cursor: default;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 380px;
+  border: 1px solid transparent;
+}
+
+.nwh-bauweisen-card:hover,
+.nwh-bauweisen-card:focus-within {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+
+}
+
+/* ====== Image ====== */
+.nwh-bauweisen-image {
+  width: 100%;
+  aspect-ratio: 16 / 10;    /* konsistent, responsive */
+  height: auto;
+  object-fit: cover;
+  display: block;
+  transition: transform .45s ease;
+}
+
+.nwh-bauweisen-card:hover .nwh-bauweisen-image {
+  transform: scale(1.02);
+}
+
+/* ====== Content ====== */
+.nwh-bauweisen-content {
+  padding: var(--space-md);
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  color: var(--white);
+}
+
+.nwh-bauweisen-title {
+  font-size: clamp(22px, 2.6vw, 30px);
+  font-weight: 700;
+  color: var(--white);
+  margin: 2px 0 var(--space-xs) 0;
+  text-align: center;
+}
+
+.nwh-bauweisen-description {
+  font-size: clamp(15px, 1.4vw, 18px);
+  color: var(--text-secondary);
+  line-height: 1.7;
+  flex-grow: 1;
+  padding: 10px;
+  text-align: center;
+}
+
+/* ====== Responsive tweaks ====== */
+@media (max-width: 640px) {
+  .nwh-bauweisen { padding: var(--space-lg) var(--space-sm); }
+  .nwh-bauweisen-grid { gap: var(--space-lg); }
+}
+
+/* ====== Reduce Motion ====== */
+@media (prefers-reduced-motion: reduce) {
+  .nwh-bauweisen-card,
+  .nwh-bauweisen-image { transition: none; }
+}

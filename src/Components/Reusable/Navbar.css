@@ -1,0 +1,298 @@
+/* ===== Luxury Modern Navbar (Dark + Gold) ===== */
+
+* { box-sizing: border-box; }
+
+.nv-wrapper{
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: saturate(140%) blur(8px);
+  background: rgba(21,34,43,.82); /* #15222b me alpha */
+  border-bottom: 1px solid rgba(214,179,73,.18); /* #d6b349 */
+  /* Rezervim i qëndrueshëm i lartësisë për të shmangur CLS nga ngarkesa e logos/fontit */
+  min-height: calc(4px + 104px); /* 4px bling + 104px nav (desktop) */
+}
+
+.nv-bling{
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    rgba(214,179,73,0) 0%,
+    rgba(214,179,73,.9) 50%,
+    rgba(214,179,73,0) 100%
+  );
+  background-size: 300% 100%;
+  opacity: .8;
+  animation: bling-sweep 2.8s linear infinite alternate;
+  will-change: background-position;
+}
+@keyframes bling-sweep{
+  from { background-position: 0% 0; }
+  to   { background-position: 100% 0; }
+}
+@media (prefers-reduced-motion: reduce){
+  .nv-bling{ animation: none; }
+}
+
+/* NAV layout: logo majtas, menu në qendër, utilities djathtas */
+.nv{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 12px 20px 12px 0; /* shtyje edhe më majtas (left = 0) */
+  display: grid;
+  grid-template-columns: 1fr auto 1fr; /* majtas | qendër | djathtas */
+  align-items: center;
+  color: transparent;
+  position: relative;
+  /* lartësi e garantuar (logo 80px + 12/12 padding) → 104px */
+  min-height: 104px;
+}
+
+.nv-logo{
+  justify-self: start;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  text-decoration:none;
+  color:#fff;
+  letter-spacing:.4px;
+  font-weight:700;
+  margin-left: -20px; /* shtyje edhe më majtas brenda container-it */
+}
+
+/* Në ekrane të gjera, bën logon “flush” me skajin e viewport-it */
+@media (min-width: 1200px){
+  .nv-logo{
+    margin-left: calc((100vw - 1200px) / 2 * -1);
+    padding-left: 100px; /* pak ajër nga skaji i ekranit */
+  }
+}
+
+.nv-menu{
+  justify-self: center;
+  display:flex;
+  align-items:center;
+  gap:4px;
+  list-style:none;
+  margin:0;
+  padding:0;
+}
+.nv-utilities{
+  justify-self: flex-end;
+  display:flex;
+  align-items:flex-end;
+  justify-content: flex-end;
+  width: 100%;
+  gap:10px;
+  margin-left: auto;
+}
+.nv-utilities .globe{ position: relative; }
+
+/* bëji “flush” me skajin e viewport-it në desktop */
+@media (min-width: 1200px){
+  .nv-utilities{
+   
+    padding-right: 12px;
+  }
+}
+
+/* Opsionale: nëse do krejt pa padding në të djathtë për nav */
+.nv{ padding-right: 0; }
+
+/* Burger */
+.nv-burger{
+  display: none;
+  width: 42px; height: 42px;
+  border: 1px solid rgba(214,179,73,.35);
+  border-radius: 14px;
+  background: transparent;
+  position: relative;
+  cursor: pointer;
+  transition: border-color .25s ease;
+}
+.nv-burger span{
+  position: absolute;
+  left:9px; right:9px;
+  height:2px; background:#ffffff; border-radius:2px;
+  transition: transform .3s ease, top .3s ease, opacity .3s ease;
+}
+.nv-burger span:nth-child(1){ top:13px; }
+.nv-burger span:nth-child(2){ top:20px; }
+.nv-burger span:nth-child(3){ top:27px; }
+.nv-burger.is-open span:nth-child(1){ top:20px; transform:rotate(45deg); }
+.nv-burger.is-open span:nth-child(2){ opacity:0; }
+.nv-burger.is-open span:nth-child(3){ top:20px; transform:rotate(-45deg); }
+.nv-burger:hover{ border-color:#d6b349; }
+
+/* Items */
+.nv-item{ position: relative; }
+.nv-item.solo{ margin-left: 8px; }
+
+/* Link bazë me radius 15px */
+.nv-link{
+  appearance:none; background:none; border:none; color:#ffffff;
+  font:inherit; padding:10px 14px; cursor:pointer; letter-spacing:.2px;
+  display:inline-flex; align-items:center; gap:8px; text-decoration:none;
+  position:relative; border-radius:15px;
+  transition: background .25s ease, color .25s ease, transform .2s ease;
+  isolation:isolate;
+}
+
+/* BORDER poshtë + djathtas, të ngjitura me radius 15px (përdorim vetëm ::after) */
+.nv-link::after{
+  content:"";
+  position:absolute;
+  left:12px; top:8px; right:6px; bottom:6px;
+  border-right:2px solid #d6b349;  /* djathtas */
+  border-bottom:2px solid #d6b349; /* poshtë  */
+  border-bottom-right-radius:15px;
+  opacity:0;
+  transform: translateY(6px);
+  transition: opacity .3s ease, transform .3s ease;
+}
+
+/* Hover / Active */
+.nv-link:hover{
+  background: linear-gradient(135deg, rgba(214,179,73,.15), rgba(214,179,73,.03));
+}
+.nv-link:hover::after{ opacity:1; transform: translateY(0); }
+.nv-item.is-active > .nv-link{ color:#d6b349; }
+.nv-item.is-active > .nv-link::after{ opacity:1; transform: translateY(0); }
+
+/* Caret anim */
+.has-caret .caret{ transition: transform .25s ease; opacity:.9; }
+.nv-item.is-active .caret{ transform: rotate(180deg); color:#d6b349; }
+
+/* Dropdown */
+.nv-dropdown{
+  position:absolute; top:100%; left:8px; min-width:280px; padding:12px;
+  background: rgba(21,34,43,.95); /* #15222b */
+  border:1px solid rgba(214,179,73,.25);
+  border-radius:16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.35), inset 0 0 60px rgba(214,179,73,.05);
+  transform: translateY(8px); opacity:0; pointer-events:none;
+  transition: opacity .25s ease, transform .25s ease;
+  z-index: 10;
+}
+.nv-dropdown.open{ opacity:1; transform: translateY(0); pointer-events:auto; }
+
+.nv-dropdown-grid{
+  display:grid; grid-template-columns: 1fr 1fr; gap:6px; list-style:none; margin:0; padding:0;
+}
+.nv-dd-link{
+  display:flex; align-items:center; justify-content:space-between; gap:12px;
+  padding:10px 12px; text-decoration:none; color:#ffffff;
+  border-radius:12px; border:1px solid transparent;
+  transition: transform .2s ease, background .2s ease, border-color .2s ease, color .2s ease;
+  background: transparent;
+}
+.nv-dd-link:hover{
+  transform: translateY(-1px);
+  background: rgba(214,179,73,.08);
+  border-color: rgba(214,179,73,.3);
+  color:#d6b349;
+}
+.dd-text{ font-size:.95rem; }
+.dd-arrow{ opacity:.8; }
+
+/* CTA — gjerësi e qëndrueshme për të shmangur “kërcimet” kur vjen webfont-i */
+.nv-cta{
+  position:relative; display:inline-flex; align-items:center; gap:10px;
+  padding:10px 16px; border-radius:14px; text-decoration:none;
+  color:#15222b; font-weight:800; letter-spacing:.3px;
+  background: linear-gradient(180deg, #ffffff, #d6b349);
+  box-shadow: 0 6px 18px rgba(214,179,73,.35), inset 0 -6px 12px rgba(0,0,0,.12);
+  border:1px solid rgba(214,179,73,.6);
+  transition: transform .2s ease, box-shadow .3s ease;
+  min-width: 140px;                 /* NEW: stabilizon gjerësinë */
+  text-align: center;
+}
+.nv-cta:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(214,179,73,.45), inset 0 -8px 14px rgba(0,0,0,.15);
+}
+.nv-cta::after{
+  content:""; position:absolute; inset:-2px; border-radius:16px;
+  background: conic-gradient(from 180deg at 50% 50%, rgba(214,179,73,0), rgba(214,179,73,.3), rgba(214,179,73,0) 60%);
+  filter: blur(8px); opacity:.35; pointer-events:none;
+}
+
+/* Language dropdown */
+.icon-only{ padding:10px; width:40px; height:40px; border-radius:12px; }
+.nv-lang{
+  position:absolute; right:0; top:100%; margin-top:8px; display:flex; flex-direction:column;
+  background: rgba(21,34,43,.95);
+  border:1px solid rgba(214,179,73,.25);
+  border-radius:12px; overflow:hidden; transform: translateY(8px); opacity:0; pointer-events:none;
+  transition: opacity .2s ease, transform .2s ease;
+  z-index: 15;
+}
+.nv-lang.open{ opacity:1; transform: translateY(0); pointer-events:auto; }
+.nv-lang .nv-dd-link{ min-width:100px; justify-content:center; }
+
+/* Logo image — raport i qëndrueshëm (parandalon CLS) */
+.nv-logo-img{
+  height: 80px;
+  width: auto;
+  aspect-ratio: 3 / 1; /* përshtate nëse logoja ka raport tjetër */
+  display: block;
+  filter: drop-shadow(0 1px 1px rgba(0,0,0,.25));
+  transition: transform .25s ease;
+}
+.nv-logo:hover .nv-logo-img{ transform: translateY(-1px); }
+
+/* Focus ring */
+.nv-link:focus-visible, .nv-cta:focus-visible, .nv-burger:focus-visible, .nv-dd-link:focus-visible{
+  outline:none;
+  box-shadow: 0 0 0 3px rgba(214,179,73,.3);
+  border-color: rgba(214,179,73,.5);
+}
+
+/* Screen reader only */
+.sr-only{
+  position: absolute !important;
+  width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0);
+  white-space: nowrap; border: 0;
+}
+
+/* Responsiveness */
+@media (max-width: 1024px){
+  .nv{
+    grid-template-columns: 1fr auto; /* logo | utilities; menu poshtë */
+    padding: 10px 12px 10px 6px;
+    min-height: 50px;                /* 30px logo + 10/10 padding */
+  }
+  .nv-wrapper{ min-height: calc(4px + 50px); }
+
+  .nv-burger{ display:block; }
+  .nv-logo{ margin-left: 20px; }
+  .nv-logo-img{ height: 30px; aspect-ratio: 3 / 1; }
+
+  .nv-menu{
+    position:absolute; left:0; right:0; top:100%; padding:10px;
+    background: rgba(21,34,43,.96);
+    border-bottom:1px solid rgba(214,179,73,.2);
+    display:grid; gap:6px;
+    transform: translateY(-8px); opacity:0; pointer-events:none;
+    transition: transform .25s ease, opacity .25s ease;
+  }
+  .nv-menu.is-open{ transform: translateY(0); opacity:1; pointer-events:auto; }
+
+  .nv-item{ width:100%; }
+  .nv-link{ width:100%; justify-content:space-between; }
+
+  .nv-dropdown{ position:relative; left:0; top:0; margin-top:6px; transform:none; opacity:1; pointer-events:auto; display:none; }
+  .nv-dropdown.open{ display:block; }
+  .nv-dropdown-grid{ grid-template-columns: 1fr; }
+
+  .nv-cta{ justify-content:center; display: none; }
+}
+
+/* Reduce motion */
+@media (prefers-reduced-motion: reduce){
+  .nv-link, .nv-dd-link, .nv-dropdown, .nv-menu, .nv-bling, .nv-cta{
+    transition:none !important;
+    animation: none !important;
+  }
+}
