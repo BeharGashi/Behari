@@ -1,0 +1,294 @@
+/* ===== Base ===== */
+.fenster {
+  background: whitesmoke;
+  color: #15222b;
+  font-family: "Poppins", Arial, sans-serif;
+  padding: 3.5rem 0 4rem;
+}
+
+.fn-section {
+  padding: 0 2rem;
+  margin: 0 auto 2.5rem;
+  max-width: 1240px;
+}
+
+/* ===== Eyebrow / Titles ===== */
+.fn-eyebrow {
+  display: inline-block;
+  font-family: "Montserrat", "Poppins", Arial, sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  color: #d6b349;
+}
+
+.fn-title {
+  font-family: "Montserrat", "Poppins", Arial, sans-serif;
+  font-weight: 900;
+  font-size: clamp(2rem, 2.8vw, 2.6rem);
+  line-height: 1.2;
+  margin: 0.3rem 0 0.6rem;
+}
+
+.fn-title span { color: #d6b349; }
+
+.fn-subtitle {
+  font-family: "Montserrat", "Poppins", Arial, sans-serif;
+  font-weight: 800;
+  font-size: clamp(1.35rem, 2vw, 1.75rem);
+  margin: 0.2rem 0 0.6rem;
+}
+
+.fn-intro {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  margin: 0 0 0.8rem;
+}
+
+/* ===== Bullet list (hero) ===== */
+.fn-list {
+  list-style: none;
+  padding: 0;
+  margin: 0.3rem 0 0.6rem;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.fn-list li {
+  position: relative;
+  padding-left: 2rem;
+}
+.fn-list li::before {
+  content: "✔";
+  position: absolute;
+  left: 0;
+  top: 0.05rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  display: inline-grid;
+  place-items: center;
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: #15222b;
+  background: linear-gradient(180deg, #d6b349, #cda33e);
+  border-radius: 6px;
+}
+
+.fn-note { font-weight: 600; }
+
+/* ===== HERO ===== */
+.fn-hero__grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 2.2rem;
+  align-items: center;
+}
+
+.fn-hero__media {
+  position: relative;
+  padding: 0;
+  border: none;
+  background: transparent;
+}
+
+.fn-hero__media img {
+  width: 100%;
+  height: auto;
+  max-height: 560px;
+  object-fit: contain;
+  border-radius: 16px;
+  border: 1px solid rgba(214,179,73,0.45);
+  box-shadow: 0 14px 28px rgba(0,0,0,0.08);
+  background: #fff;
+}
+
+/* Gold ribbon këndi */
+.fn-hero__ribbon {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  padding: 0.35rem 0.55rem;
+  font-weight: 700;
+  font-size: 0.78rem;
+  color: #15222b;
+  background: rgba(255,255,255,0.9);
+  border: 1px solid rgba(214,179,73,0.6);
+  border-radius: 999px;
+  backdrop-filter: blur(2px);
+}
+
+/* ===== CARDS (3 lloje) ===== */
+.fn-cards__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.4rem;
+}
+
+@media (min-width: 760px) {
+  .fn-cards__grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 1120px) {
+  .fn-cards__grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+.fcard {
+  background: #fff;
+  border-radius: 18px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+  border: 1px solid rgba(214,179,73,0.4);
+  transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+}
+.fcard::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 6px;
+  background: linear-gradient(90deg, #cda33e, #d6b349, #e1c56a);
+}
+.fcard:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 36px rgba(0,0,0,0.12);
+  border-color: rgba(214,179,73,0.7);
+}
+
+.fcard__media {
+  position: relative;
+  padding: 10px;
+  border-bottom: 1px solid rgba(214,179,73,0.3);
+  background: #fff;
+}
+.fcard__media img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  display: block;
+  border-radius: 12px;
+}
+.fcard__tag {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  font-weight: 700;
+  font-size: 0.78rem;
+  color: #15222b;
+  background: rgba(255,255,255,0.9);
+  border: 1px solid rgba(214,179,73,0.6);
+  padding: 0.28rem 0.5rem;
+  border-radius: 999px;
+  backdrop-filter: blur(2px);
+}
+
+.fcard__body { padding: 1rem 1rem 1.2rem; color: #15222b; }
+.fcard__eyebrow {
+  display: inline-block;
+  font-family: "Montserrat", "Poppins", Arial, sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  color: #d6b349;
+}
+.fcard__title {
+  font-family: "Montserrat", "Poppins", Arial, sans-serif;
+  font-weight: 800;
+  font-size: 1.15rem;
+  margin: 0.35rem 0 0.4rem;
+}
+.fcard__text {
+  font-size: 0.98rem;
+  line-height: 1.7;
+  margin: 0 0 0.8rem;
+}
+
+/* Stats */
+.fcard__stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.6rem;
+}
+.fstat {
+  background: #fff;
+  border: 1px solid rgba(214,179,73,0.5);
+  border-radius: 12px;
+  padding: 0.6rem 0.5rem;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+.fstat__value {
+  font-family: "Montserrat", "Poppins", Arial, sans-serif;
+  font-weight: 800;
+  font-size: 1rem;
+  line-height: 1.15;
+}
+.fstat__label {
+  font-size: 0.78rem;
+  color: rgba(21,34,43,0.85);
+}
+
+/* ===== SPLIT (mech & rollos) ===== */
+.fn-split {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 2.2rem;
+  align-items: center;
+}
+.fn-split--alt { grid-template-columns: 0.95fr 1.05fr; }
+
+.fn-split__media {
+  background: #fff;
+  border-radius: 18px;
+  border: 1px solid rgba(214,179,73,0.5);
+  padding: 10px;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+}
+.fn-media--frame { padding: 12px; border-width: 2px; }
+.fn-split__media img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  display: block;
+  border-radius: 12px;
+}
+
+.fn-split__content { color: #15222b; }
+
+/* Advantages list (Rollos) */
+.fn-adv {
+  list-style: none;
+  padding: 0;
+  margin: 0.7rem 0 0;
+  display: grid;
+  gap: 0.5rem;
+}
+.fn-adv li {
+  position: relative;
+  padding-left: 1.25rem;
+  line-height: 1.6;
+}
+.fn-adv li::before {
+  content: "•";
+  position: absolute;
+  left: 0.15rem;
+  top: 0;
+  color: #d6b349;
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 1024px) {
+  .fn-hero__grid,
+  .fn-split,
+  .fn-split--alt { grid-template-columns: 1fr; }
+  .fn-hero__media img { max-height: 460px; }
+  .fn-split__media img { height: 420px; }
+}
+
+@media (max-width: 560px) {
+  .fn-section { padding: 0 1rem; }
+  .fn-hero__media img { max-height: 340px; }
+  .fn-split__media img { height: 340px; }
+}

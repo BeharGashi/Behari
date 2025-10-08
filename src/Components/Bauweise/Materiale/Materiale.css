@@ -1,0 +1,167 @@
+/* Fonts supozohet të jenë të ngarkuara globalisht:
+   Montserrat për tituj, Poppins për tekst. */
+.materiale {
+  background: whitesmoke;
+  padding: 4rem 2rem;
+}
+
+.materiale__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  gap: 3rem;
+}
+
+/* Item bazë (2 kolona me alternim) */
+.materiale__item {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 2rem;
+  align-items: center;
+  background: #fff;
+  border: 1px solid rgba(214, 179, 73, 0.25);
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+  overflow: hidden;
+}
+
+/* Alternim: kur është .is-alt, anojmë kolonat */
+.materiale__item.is-alt {
+  grid-template-columns: 0.95fr 1.05fr;
+}
+
+.materiale__image img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.35s ease;
+}
+
+.materiale__item:hover .materiale__image img {
+  transform: scale(1.02);
+}
+
+/* Content */
+.materiale__content {
+  padding: 1.75rem 1.75rem 1.75rem 0;
+  color: #15222b;
+}
+
+.materiale__item.is-alt .materiale__content {
+  padding: 1.75rem 0 1.75rem 1.75rem;
+}
+
+@media (max-width: 900px) {
+  .materiale__item,
+  .materiale__item.is-alt {
+    grid-template-columns: 1fr;
+  }
+  .materiale__content {
+    padding: 1.5rem;
+  }
+}
+
+/* Tipografi */
+.materiale__eyebrow {
+  display: inline-block;
+  font-family: "Montserrat", "Poppins", Arial, sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  color: #d6b349;
+  margin-bottom: 0.4rem;
+}
+
+.materiale__title {
+  font-family: "Montserrat", "Poppins", Arial, sans-serif;
+  font-weight: 800;
+  font-size: clamp(1.4rem, 2.2vw, 1.9rem);
+  line-height: 1.25;
+  margin: 0.15rem 0 0.6rem 0;
+  color: #15222b;
+}
+
+.materiale__divider {
+  width: 90px;
+  height: 4px;
+  background: #d6b349;
+  border-radius: 2px;
+  margin: 0.6rem 0 1rem 0;
+}
+
+.materiale__paragraph,
+.materiale__closing {
+  font-family: "Poppins", Arial, sans-serif;
+  font-size: 1.04rem;
+  line-height: 1.75;
+  margin: 0 0 1rem 0;
+  color: #15222b;
+}
+
+/* Lista e përfitimeve */
+.materiale__listtitle {
+  font-family: "Montserrat", "Poppins", Arial, sans-serif;
+  font-weight: 700;
+  margin: 1.2rem 0 0.6rem 0;
+  color: #15222b;
+  font-size: 1.05rem;
+}
+
+.materiale__list {
+  list-style: none;
+  margin: 0 0 1.2rem 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.65rem;
+}
+
+.materiale__listitem {
+  display: grid;
+  grid-template-columns: 26px 1fr;
+  align-items: start;
+  gap: 0.5rem;
+  padding: 0.65rem 0.75rem;
+  background: #ffffff;
+  border: 1px solid rgba(21, 34, 43, 0.08);
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.materiale__listitem:hover {
+  transform: translateY(-2px);
+  border-color: rgba(214, 179, 73, 0.45);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+}
+
+.materiale__check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 8px;
+  background: linear-gradient(180deg, #d6b349, #cda33e);
+  color: #15222b;
+  font-weight: 800;
+  line-height: 1;
+}
+
+/* Renditja e kolonave (alternim vizual) */
+.materiale__item .materiale__image { order: 1; }
+.materiale__item .materiale__content { order: 2; }
+.materiale__item.is-alt .materiale__image { order: 2; }
+.materiale__item.is-alt .materiale__content { order: 1; }
+
+/* Spacing i përgjithshëm */
+@media (max-width: 600px) {
+  .materiale {
+    padding: 3rem 1rem;
+  }
+  .materiale__image img {
+    height: 320px;
+  }
+}

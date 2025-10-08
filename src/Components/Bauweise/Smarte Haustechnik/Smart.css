@@ -1,0 +1,305 @@
+/* ===== Base ===== */
+.smart {
+  background: whitesmoke;
+  color: #15222b;
+  font-family: "Poppins", Arial, sans-serif;
+  padding: 3.5rem 0 4rem;
+}
+
+.sm-section {
+  max-width: 1240px;
+  margin: 0 auto 2.5rem;
+  padding: 0 2rem;
+}
+
+/* ===== Typography ===== */
+.sm-eyebrow {
+  display: inline-block;
+  font-family: "Montserrat", "Poppins", Arial, sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  color: #d6b349;
+}
+
+.sm-title {
+  font-family: "Montserrat", "Poppins", Arial, sans-serif;
+  font-weight: 900;
+  font-size: clamp(2rem, 2.8vw, 2.6rem);
+  line-height: 1.2;
+  margin: 0.3rem 0 0.6rem;
+}
+.sm-title span { color: #d6b349; }
+
+.sm-subtitle {
+  font-family: "Montserrat", "Poppins", Arial, sans-serif;
+  font-weight: 800;
+  font-size: clamp(1.35rem, 2vw, 1.75rem);
+  margin: 0.2rem 0 0.6rem;
+}
+
+.sm-lead {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  margin: 0 0 0.8rem;
+}
+
+.sm-note { font-weight: 600; }
+
+/* ===== HERO ===== */
+.sm-hero__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+.sm-hero__content {
+  background: #fff;
+  border: 1px solid rgba(21,34,43,0.08);
+  border-radius: 18px;
+  padding: 1.6rem 1.6rem 1.8rem;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.06);
+  position: relative;
+  
+}
+.sm-hero__content::before {
+  content: "";
+  position: absolute;
+  left: 16px; right: 16px; top: -6px;
+  height: 6px;
+  border-radius: 6px;
+  background: linear-gradient(90deg, #cda33e, #d6b349, #e1c56a);
+}
+
+/* Chips */
+.sm-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0;
+  margin: 0.4rem 0 0.2rem;
+  list-style: none;
+}
+.sm-chip {
+  font-weight: 700;
+  font-size: 0.8rem;
+  color: #15222b;
+  background: rgba(214,179,73,0.18);
+  border: 1px solid rgba(214,179,73,0.55);
+  padding: 0.28rem 0.6rem;
+  border-radius: 999px;
+}
+
+/* ===== Cards & content blocks ===== */
+.sm-card {
+  background: #fff;
+  border: 1px solid rgba(21,34,43,0.08);
+  border-radius: 18px;
+  padding: 1.4rem 1.6rem 1.7rem;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.06);
+}
+.sm-card--stripe {
+  border-left: 6px solid #d6b349;
+}
+.sm-card--soft {
+  background: #fff;
+  border: 1px dashed rgba(214,179,73,0.55);
+}
+
+/* ===== Split layout ===== */
+.sm-split {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 2.2rem;
+  align-items: center;
+}
+.sm-split--alt {
+  grid-template-columns: 0.95fr 1.05fr;
+}
+.sm-content p {
+  font-size: 1.02rem;
+  line-height: 1.75;
+  margin: 0 0 0.8rem;
+}
+.sm-list {
+  list-style: none;
+  padding: 0;
+  margin: 0.6rem 0 0;
+  display: grid;
+  gap: 0.5rem;
+}
+.sm-list li {
+  position: relative;
+  padding-left: 1.25rem;
+  line-height: 1.6;
+  font-weight: 500;
+}
+.sm-list li::before {
+  content: "•";
+  position: absolute;
+  left: 0.15rem;
+  top: 0;
+  color: #d6b349;
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+/* ===== Ordered list (funktionen) ===== */
+.sm-olist {
+  counter-reset: c;
+  list-style: none;
+  padding: 0;
+  margin: 0.6rem 0 0;
+  display: grid;
+  gap: 0.6rem;
+}
+.sm-olist li {
+  counter-increment: c;
+  background: #fff;
+  border: 1px solid rgba(214,179,73,0.45);
+  border-radius: 12px;
+  padding: 0.75rem 0.9rem 0.75rem 3.1rem;
+  position: relative;
+  line-height: 1.65;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+}
+.sm-olist li::before {
+  content: counter(c);
+  position: absolute;
+  left: 0.9rem; top: 50%;
+  transform: translateY(-50%);
+  width: 1.8rem; height: 1.8rem;
+  border-radius: 50%;
+  display: grid; place-items: center;
+  font-family: "Montserrat", "Poppins", Arial, sans-serif;
+  font-weight: 800;
+  color: #15222b;
+  background: linear-gradient(180deg, #d6b349, #cda33e);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* ===== Media ===== */
+.sm-media {
+  background: #fff;
+  border-radius: 18px;
+  border: 1px solid rgba(214,179,73,0.5);
+  padding: 10px;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+}
+.sm-media--frame { padding: 12px; border-width: 2px; }
+.sm-media img {
+  width: 100%;
+  height: 480px;
+  object-fit: cover;
+  display: block;
+  border-radius: 12px;
+}
+.sm-media--small img {
+  height: 220px;
+  object-fit: cover;
+}
+
+/* ===== Timeline ===== */
+.sm-timeline {
+  position: relative;
+  margin-left: 0.6rem;
+  padding-left: 1.4rem;
+  border-left: 3px solid rgba(214,179,73,0.6);
+  display: grid;
+  gap: 1.2rem;
+}
+.sm-step {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 0.8rem;
+  position: relative;
+}
+.sm-step__dot {
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: #d6b349;
+  border: 3px solid #fff;
+  box-shadow: 0 0 0 2px rgba(214,179,73,0.6);
+  position: absolute;
+  left: -9px; top: 6px;
+}
+.sm-step__body {
+  background: #fff;
+  border: 1px solid rgba(21,34,43,0.08);
+  border-radius: 12px;
+  padding: 0.85rem 1rem;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+}
+.sm-step__title {
+  font-family: "Montserrat", "Poppins", Arial, sans-serif;
+  font-weight: 800;
+  margin: 0 0 0.35rem 0;
+  font-size: 1.05rem;
+}
+.sm-callout {
+  border: 1px dashed rgba(214,179,73,0.6);
+  border-radius: 10px;
+  padding: 0.6rem 0.7rem;
+  background: #fff;
+  margin: 0.2rem 0 0.5rem;
+}
+
+/* Kompatibilität chips */
+.sm-compat {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  padding: 0; margin: 0.4rem 0 0;
+  list-style: none;
+}
+.sm-compat__chip {
+  font-weight: 700;
+  font-size: 0.8rem;
+  color: #15222b;
+  background: rgba(214,179,73,0.18);
+  border: 1px solid rgba(214,179,73,0.55);
+  padding: 0.28rem 0.6rem;
+  border-radius: 999px;
+}
+
+/* Connectivity row */
+.sm-connect {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1rem;
+  align-items: center;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 1024px) {
+  .sm-split, .sm-split--alt { grid-template-columns: 1fr; }
+  .sm-media img { height: 400px; }
+  .sm-media--small img { height: 200px; }
+}
+@media (max-width: 560px) {
+  .sm-section { padding: 0 1rem; }
+  .sm-media img { height: 320px; }
+  .sm-media--small img { height: 180px; }
+}
+
+/* Ikona SVG brenda chips */
+.sm-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem; /* ikonë ↔ tekst */
+  margin: 0.55rem clamp(2rem, 1.8vw, 1.2rem) 0 0; /* hapësira mes chip-eve */
+  border-radius: 999px;
+  padding: 0.36rem 0.9rem; /* pak më shumë ajër brenda */
+  background: rgba(214,179,73,0.18);
+  border: 1px solid rgba(214,179,73,0.55);
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: #15222b; /* SVG merr këtë ngjyrë via currentColor */
+}
+
+.sm-chip .sm-ico {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  vertical-align: middle;
+}
+

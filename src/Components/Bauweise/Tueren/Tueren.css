@@ -1,0 +1,275 @@
+/* ===== Base ===== */
+.tueren {
+  background: whitesmoke;
+  color: #15222b;
+  padding: 3.5rem 0 4rem;
+  font-family: "Poppins", Arial, sans-serif;
+}
+
+.t-section {
+  padding: 0 2rem;
+  margin: 0 auto 2.5rem;
+  max-width: 1240px;
+}
+
+.t-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr; /* tekst më i gjerë për luks & lexueshmëri */
+  gap: 2.25rem;
+  align-items: center;
+}
+
+.t-grid--alt { grid-template-columns: 0.95fr 1.05fr; }
+
+/* ===== Typography ===== */
+.t-eyebrow {
+  display: inline-block;
+  font-family: "Montserrat", "Poppins", Arial, sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  color: #d6b349;
+  margin-bottom: 0.25rem;
+}
+
+.t-title {
+  font-family: "Montserrat", "Poppins", Arial, sans-serif;
+  font-weight: 900;
+  font-size: clamp(1.9rem, 2.6vw, 2.4rem);
+  line-height: 1.2;
+  margin: 0 0 0.6rem 0;
+}
+
+.t-subtitle {
+  font-family: "Montserrat", "Poppins", Arial, sans-serif;
+  font-weight: 800;
+  font-size: clamp(1.4rem, 1.9vw, 1.8rem);
+  margin: 0 0 0.5rem 0;
+}
+
+.t-subtitle--center { text-align: center; }
+
+.t-lead {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  margin: 0.5rem 0 0.8rem;
+}
+
+.t-lead--center { text-align: center; max-width: 70ch; margin-inline: auto; }
+
+.t-note {
+  font-weight: 600;
+  margin-top: 0.6rem;
+}
+
+/* Badges */
+.t-badges { display: flex; gap: 0.5rem; padding: 0; margin: 0.75rem 0 0; list-style: none; }
+.t-badge {
+  font-weight: 700;
+  font-size: 0.8rem;
+  color: #15222b;
+  background: rgba(214,179,73,0.18);
+  border: 1px solid rgba(214,179,73,0.55);
+  padding: 0.28rem 0.6rem;
+  border-radius: 999px;
+}
+
+/* ===== Media (white frame + gold edge) ===== */
+.t-media {
+  background: #fff;
+  border-radius: 18px;
+  border: 1px solid rgba(214,179,73,0.5);
+  padding: 10px;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+}
+
+.t-media img {
+  width: 100%;
+  height: 520px;
+  object-fit: cover;
+  display: block;
+  border-radius: 12px;
+}
+
+.t-media--frame { padding: 12px; border-width: 2px; }
+
+/* ===== Lists ===== */
+.t-list {
+  list-style: none;
+  padding: 0;
+  margin: 0.7rem 0 0.2rem;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.t-list li {
+  position: relative;
+  padding-left: 1.4rem;
+  line-height: 1.6;
+  font-weight: 500;
+}
+
+.t-list li::before {
+  content: "✔";
+  position: absolute;
+  left: 0;
+  top: 0.05rem;
+  width: 1rem;
+  height: 1rem;
+  display: inline-grid;
+  place-items: center;
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: #15222b;
+  background: linear-gradient(180deg, #d6b349, #cda33e);
+  border-radius: 6px;
+}
+
+/* ===== Models (Luxury Cards) ===== */
+.t-models { margin-top: 2.5rem; }
+
+.t-head { margin-bottom: 1.2rem; padding: 0 1rem; }
+
+.t-cards {
+  padding: 0 1rem;
+  display: grid;
+  gap: 1.4rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 700px) {
+  .t-cards { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 1100px) {
+  .t-cards { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* Card */
+.doorcard {
+  background: #fff;
+  border-radius: 18px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+  border: 1px solid rgba(214,179,73,0.4);
+  transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+}
+
+.doorcard::before {
+  /* top gold strip */
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 6px;
+  background: linear-gradient(90deg, #cda33e, #d6b349, #e1c56a);
+}
+
+.doorcard:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 36px rgba(0,0,0,0.12);
+  border-color: rgba(214,179,73,0.7);
+}
+
+/* Card media */
+.doorcard__media {
+  position: relative;
+  padding: 10px;
+  border-bottom: 1px solid rgba(214,179,73,0.3);
+  background: #fff;
+}
+
+.doorcard__media img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  display: block;
+  border-radius: 12px;
+}
+
+/* Small tag */
+.doorcard__tag {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  font-weight: 700;
+  font-size: 0.78rem;
+  color: #15222b;
+  background: rgba(255,255,255,0.86);
+  border: 1px solid rgba(214,179,73,0.6);
+  padding: 0.28rem 0.5rem;
+  border-radius: 999px;
+  backdrop-filter: blur(2px);
+}
+
+/* Card body */
+.doorcard__body { padding: 1rem 1rem 1.2rem; }
+
+.doorcard__title {
+  font-family: "Montserrat", "Poppins", Arial, sans-serif;
+  font-weight: 800;
+  font-size: 1.15rem;
+  margin: 0 0 0.6rem 0;
+}
+
+.doorcard__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.doorcard__item {
+  position: relative;
+  padding-left: 1.25rem;
+  line-height: 1.55;
+}
+
+.doorcard__item::before {
+  content: "•";
+  position: absolute;
+  left: 0.15rem;
+  top: 0;
+  color: #d6b349;
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+/* ===== Responsive tweaks ===== */
+@media (max-width: 1024px) {
+  .t-grid, .t-grid--alt { grid-template-columns: 1fr; }
+  .t-media img { height: 420px; }
+}
+
+@media (max-width: 560px) {
+  .t-section { padding: 0 1rem; }
+  .t-media img { height: 340px; }
+}
+
+/* ===== Hero image fix – vetëm për foton e parë ===== */
+.t-media.t-media--hero {
+  padding: 0;                 /* pa kornizë të trashë */
+  border: none;
+  background: transparent;
+  box-shadow: none;
+}
+
+.t-media.t-media--hero img {
+  width: 100%;
+  height: auto;               /* ruaj raportin, pa crop */
+  max-height: 560px;          /* kontrollo lartësinë në desktop */
+  object-fit: contain;        /* shfaq e gjithë fotoja */
+  object-position: center;
+  border-radius: 14px;
+  border: 1px solid rgba(214, 179, 73, 0.45);
+  box-shadow: 0 14px 28px rgba(0,0,0,0.08);
+  background: #fff;           /* letterbox i pastër nëse ka boshllëk */
+}
+
+@media (max-width: 1024px) {
+  .t-media.t-media--hero img { max-height: 460px; }
+}
+@media (max-width: 560px) {
+  .t-media.t-media--hero img { max-height: 360px; }
+}

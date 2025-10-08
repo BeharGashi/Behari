@@ -1,0 +1,456 @@
+/* Sfond i çelët dhe spacing i bollshëm, ndryshe nga seksionet e tjera */
+.wandaufbau {
+  background: linear-gradient(180deg, #ffffff 0%, whitesmoke 100%);
+  padding: 4.5rem 2rem;
+}
+
+.wandaufbau__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr; /* imazhi pak më kompakt, teksti më i gjerë */
+  gap: 2.5rem;
+  align-items: center;
+}
+
+/* --- Imazhi me kornizë (design tjetër nga “card + shadow”) --- */
+.wandaufbau__imagewrap {
+  position: relative;
+}
+
+.wandaufbau__frame {
+  position: relative;
+  padding: 12px;                   /* kornizë e brendshme */
+  border: 2px solid #d6b349;       /* gold frame */
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 10px 28px rgba(0,0,0,0.08);
+  transform: rotate(-0.6deg);      /* prekje e lehtë ndryshe */
+  transition: transform 300ms ease, box-shadow 300ms ease;
+}
+
+.wandaufbau__frame::after {
+  /* vijë dekorative gold në prapaskenë për theks */
+  content: "";
+  position: absolute;
+  inset: -12px -12px auto auto;
+  width: 60px;
+  height: 60px;
+  border-top: 6px solid #d6b349;
+  border-right: 6px solid #d6b349;
+  border-radius: 14px 18px 0 0;
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.wandaufbau__imagewrap:hover .wandaufbau__frame {
+  transform: rotate(0deg) translateY(-2px);
+  box-shadow: 0 16px 36px rgba(0,0,0,0.12);
+}
+
+.wandaufbau__img {
+  display: block;
+  width: 100%;
+  height: 520px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+/* --- Blloku i tekstit me shirit vertikal gold në të majtë --- */
+.wandaufbau__content {
+  background: #fff;
+  border-left: 6px solid #d6b349;  /* accent stripe */
+  border-radius: 14px;
+  padding: 1.6rem 1.8rem;
+  color: #15222b;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+}
+
+.wandaufbau__eyebrow {
+  display: inline-block;
+  font-family: "Montserrat", "Poppins", Arial, sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  color: #d6b349;
+  margin-bottom: 0.35rem;
+}
+
+.wandaufbau__title {
+  font-family: "Montserrat", "Poppins", Arial, sans-serif;
+  font-weight: 800;
+  font-size: clamp(1.5rem, 2.3vw, 2rem);
+  line-height: 1.25;
+  margin: 0 0 0.75rem 0;
+  color: #15222b;
+}
+
+.wandaufbau__lead {
+  font-family: "Poppins", Arial, sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.75;
+  margin: 0 0 0.9rem 0;
+  color: #15222b;
+}
+
+.wandaufbau__content p {
+  font-family: "Poppins", Arial, sans-serif;
+  font-size: 1.02rem;
+  line-height: 1.75;
+  margin: 0 0 0.9rem 0;
+  color: #15222b;
+}
+
+/* Chips – dizajn i thjeshtë, i lehtë, ndryshe nga listat e seksioneve të tjera */
+.wandaufbau__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.6rem;
+  padding: 0;
+  list-style: none;
+}
+
+.wandaufbau__chip {
+  font-family: "Poppins", Arial, sans-serif;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #15222b;
+  padding: 0.45rem 0.7rem;
+  background: #fff;
+  border: 1px solid rgba(214, 179, 73, 0.45);
+  border-radius: 999px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+}
+
+/* --- Responsiviteti --- */
+@media (max-width: 980px) {
+  .wandaufbau__img { height: 460px; }
+}
+
+@media (max-width: 860px) {
+  .wandaufbau__container {
+    grid-template-columns: 1fr;  /* stack */
+  }
+  .wandaufbau__imagewrap {
+    order: 2; /* teksti lart, imazhi poshtë në mobile për lexim më të mirë */
+  }
+  .wandaufbau__frame {
+    transform: rotate(0deg);
+  }
+  .wandaufbau__img { height: 380px; }
+}
+
+@media (max-width: 520px) {
+  .wandaufbau { padding: 3.5rem 1rem; }
+  .wandaufbau__img { height: 320px; }
+}
+
+
+/* Seksion i ri 3-kartësh – dizajn ndryshe nga seksionet e tjera */
+.tp {
+  background: whitesmoke;
+  padding: 1rem 2rem;
+}
+
+.tp__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  gap: 1.8rem;
+  grid-template-columns: 1fr;                /* mobile */
+}
+
+@media (min-width: 640px) {
+  .tp__container { grid-template-columns: repeat(2, 1fr); } /* tablet */
+}
+@media (min-width: 1024px) {
+  .tp__container { grid-template-columns: repeat(3, 1fr); } /* desktop */
+}
+
+/* Karta – top strip gold, stile të pastra, pa korniza të rënda */
+.tp__card {
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 22px rgba(0,0,0,0.06);
+  display: grid;
+  grid-template-rows: auto 1fr;
+  position: relative;
+  transition: transform 220ms ease, box-shadow 220ms ease;
+}
+
+/* Shirit i artë horizontal në krye (aksent unik) */
+.tp__card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 6px;
+  background: linear-gradient(90deg, #cda33e, #d6b349, #e1c56a);
+}
+
+/* Hover i lehtë */
+@media (hover: hover) and (pointer: fine) {
+  .tp__card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 28px rgba(0,0,0,0.1);
+  }
+}
+
+/* Media */
+.tp__media img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+  margin-top: 20px;
+}
+
+@media (min-width: 640px) {
+  .tp__media img { height: 200px; }
+}
+@media (min-width: 1024px) {
+  .tp__media img { height: 220px; }
+}
+
+/* Trupi i kartës */
+.tp__body {
+  padding: 1.2rem 1.2rem 1.35rem;
+  color: #15222b;
+  text-align: center;
+}
+
+/* “Pill” Thermo Protect 40 */
+.tp__eyebrow {
+  display: inline-block;
+  font-family: "Montserrat", "Poppins", Arial, sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  color: #15222b;
+  background: rgba(214, 179, 73, 0.18);
+  border: 1px solid rgba(214, 179, 73, 0.5);
+  padding: 0.28rem 0.6rem;
+  border-radius: 999px;
+}
+
+/* Titulli + tagline */
+.tp__title {
+  font-family: "Montserrat", "Poppins", Arial, sans-serif;
+  font-weight: 800;
+  font-size: 1.24rem;
+  margin: 0.6rem 0 0.2rem;
+  color: #15222b;
+}
+
+.tp__tagline {
+  font-family: "Poppins", Arial, sans-serif;
+  font-weight: 600;
+  font-size: 0.98rem;
+  color: #d6b349;
+  margin: 0 0 0.6rem 0;
+}
+
+/* Teksti */
+.tp__text {
+  font-family: "Poppins", Arial, sans-serif;
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: #15222b;
+  margin: 0 0 1rem 0;
+}
+
+/* Statistikat – dy kuti të pastra me vija gold */
+.tp__stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem;
+}
+
+.tp__stat {
+  background: #fff;
+  border: 1px solid rgba(214,179,73,0.5);
+  border-radius: 12px;
+  padding: 0.7rem 0.8rem;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.tp__stat-value {
+  font-family: "Montserrat", "Poppins", Arial, sans-serif;
+  font-weight: 800;
+  font-size: 1.05rem;
+  color: #15222b;
+  line-height: 1.2;
+}
+
+.tp__stat-label {
+  font-family: "Poppins", Arial, sans-serif;
+  font-size: 0.8rem;
+  color: rgba(21,34,43,0.8);
+  margin-top: 0.25rem;
+}
+
+/* Spacing i seksionit në ekrane shumë të vegjël */
+@media (max-width: 520px) {
+  .tp { padding: 3rem 1rem; }
+}
+
+/* Seksion i lehtë, modern: tekst në mes, foto majtas/djathtas */
+/* ===== WarmColdSplit – tekst i lexueshëm mes dy fotove ===== */
+/* Dizajn light, modern dhe i ndryshëm nga seksionet e tjera */
+.wk {
+  background: #ffffff;
+  padding: 4rem 2rem;
+}
+
+.wk__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr; /* më shumë hapësirë për tekst */
+  gap: 2.25rem;
+  align-items: center;
+}
+
+/* Blloku i tekstit me accent bar horizontal */
+.wk__content {
+  position: relative;
+  background: #fff;
+  border: 1px solid rgba(21, 34, 43, 0.08);
+  border-radius: 16px;
+  padding: 1.6rem 1.6rem 1.8rem;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.06);
+}
+
+.wk__content::before {
+  /* shiriti i artë në krye si accent (ndryshe nga shiritat vertikalë) */
+  content: "";
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  top: -6px;
+  height: 6px;
+  border-radius: 6px;
+  background: linear-gradient(90deg, #cda33e, #d6b349, #e1c56a);
+}
+
+.wk__header { margin-bottom: 0.75rem; }
+
+.wk__title {
+  margin: 0 0 0.25rem 0;
+  font-family: "Montserrat", "Poppins", Arial, sans-serif;
+  font-weight: 800;
+  font-size: clamp(1.5rem, 2.3vw, 2rem);
+  line-height: 1.25;
+  color: #15222b;
+  letter-spacing: 0.2px;
+}
+
+.wk__title-warm { color: #d6b349; }
+.wk__title-cool { color: #15222b; }
+
+.wk__divider {
+  width: 88px;
+  height: 3px;
+  background: #d6b349;
+  border-radius: 2px;
+}
+
+.wk__lead {
+  font-family: "Poppins", Arial, sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: #15222b;
+  margin: 0.8rem 0 0.9rem;
+}
+
+.wk__content p {
+  font-family: "Poppins", Arial, sans-serif;
+  font-size: 1.02rem;
+  line-height: 1.75;
+  color: #15222b;
+  margin: 0 0 0.9rem 0;
+}
+
+/* Fakta – stil minimalist me "bullet" gold të mbushur */
+.wk__facts {
+  list-style: none;
+  padding: 0;
+  margin: 0.6rem 0 0 0;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.wk__fact {
+  display: grid;
+  grid-template-columns: 12px 1fr;
+  align-items: start;
+  gap: 0.6rem;
+  padding: 0.45rem 0.55rem;
+  border-radius: 10px;
+  background: #ffffff;
+  border: 1px dashed rgba(214, 179, 73, 0.45);
+}
+
+.wk__bullet {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #d6b349;
+  display: inline-block;
+  margin-top: 6px;
+}
+
+/* Paneli i imazhit me kornizë të hollë gold dhe offset corner */
+.wk__media { position: relative; }
+
+.wk__frame {
+  position: relative;
+  border: 1px solid rgba(214, 179, 73, 0.6);
+  border-radius: 18px;
+  padding: 8px;
+  background: #fff;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+}
+
+.wk__frame::after {
+  content: "";
+  position: absolute;
+  right: -10px;
+  bottom: -10px;
+  width: 60px;
+  height: 60px;
+  border-right: 5px solid #d6b349;
+  border-bottom: 5px solid #d6b349;
+  border-radius: 0 16px 16px 0;
+  opacity: 0.8;
+}
+
+.wk__frame img {
+  width: 100%;
+  height: 520px;
+  object-fit: cover;
+  display: block;
+  border-radius: 12px;
+  transition: transform 300ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .wk__frame:hover img { transform: scale(1.02); }
+}
+
+/* Responsive */
+@media (max-width: 980px) {
+  .wk__frame img { height: 460px; }
+}
+@media (max-width: 860px) {
+  .wk__container { grid-template-columns: 1fr; }
+  .wk__frame img { height: 380px; }
+}
+@media (max-width: 520px) {
+  .wk { padding: 3.2rem 1rem; }
+  .wk__frame img { height: 320px; }
+}

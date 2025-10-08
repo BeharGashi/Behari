@@ -1,0 +1,345 @@
+.tur-wrapper {
+  position: relative;
+  height: 100%;
+}
+
+.tur-banner {
+  position: relative;
+  height: 90vh;
+  min-height: 600px;
+  max-height: 1200px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-attachment: fixed;
+}
+
+.tur-overlay {
+  background-color: rgba(21, 34, 43, 0.4);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+
+.tur-content {
+  position: relative;
+  z-index: 3;
+  color: white !important;
+  text-align: center;
+  max-width: 900px;
+  padding: 20px;
+  aniturion: nb-fadeInUp 0.8s ease;
+  background-color: 0 8px 24px rgba(21, 34, 43, 0.4) !important;
+}
+
+.tur-prefix {
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+  font-weight: 500;
+  color: white !important;
+  text-shadow: 1px 1px 3px rgba(21, 34, 43, 0.4);
+}
+
+.tur-title {
+  font-size: 3rem;
+  line-height: 1.2;
+  font-weight: bold;
+  margin-bottom: 25px;
+  text-shadow: 2px 2px 5px rgba(21, 34, 43, 0.4);
+}
+
+.tur-short {
+  font-size: 1.5rem;
+  font-weight: 300;
+  margin-bottom: 30px;
+  text-shadow: 1px 1px 3px rgba(21, 34, 43, 0.4);
+  color: #fff !important;
+}
+
+/* Aniturion */
+@keyframes nb-fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Info Box Styles */
+.tur-infobox {
+  position: absolute;
+  bottom:-40px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  width: 90%;
+  max-width: 1200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(145deg, #ffffff, #f3f3f3);
+  border-radius: 100px;
+  padding: 15px 30px;
+  box-shadow:
+    0 8px 24px rgba(21, 34, 43, 0.4),
+    inset 0 2px 4px rgba(255, 255, 255, 0.8),
+    inset 0 -2px 4px rgba(21, 34, 43, 0.4);
+  gap: 40px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  background: rgba(21, 34, 43,.55) !important;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(201,161,74,.35);
+  border-radius: 16px;
+  box-shadow: 0 16px 40px rgba(21, 34, 43,.35);
+}
+
+.tur-infobox:hover {
+  transform: translateX(-50%) translateY(-5px);
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.2),
+    inset 0 3px 5px rgba(255, 255, 255, 0.9),
+    inset 0 -3px 5px rgba(21, 34, 43, 0.4);
+}
+
+/* Info Item */
+.tur-info-item {
+  padding-right: 30px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: white;
+  font-weight: 500;
+  font-size: 16px;
+  position: relative;
+}
+
+.tur-info-item:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 60%;
+  width: 1px;
+  background-color: rgba(21, 34, 43, 0.2);
+}
+
+/* Icon */
+.tur-icon {
+  background: linear-gradient(145deg, #ffffff, #f0f0f0);
+  color: #082C38;
+  padding: 10px;
+  border-radius: 50%;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow:
+    0 3px 6px rgba(0, 0, 0, 0.15),
+    inset 0 2px 4px rgba(255, 255, 255, 0.8);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tur-icon:hover {
+  transform: scale(1.1);
+  box-shadow:
+    0 5px 10px rgba(0, 0, 0, 0.2),
+    inset 0 2px 5px rgba(255, 255, 255, 0.9);
+}
+
+/* Links */
+.tur-info-item a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 16px;
+  transition: color 0.2s ease;
+  white-space: nowrap;
+}
+
+.tur-info-item a:hover {
+  color: #4ea674;
+  text-decoration: none;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1200px) {
+  .tur-infobox {
+    padding: 15px 25px;
+    gap: 30px;
+  }
+
+  .tur-info-item {
+    padding-right: 25px;
+    font-size: 15px;
+  }
+
+  .tur-info-item a {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 992px) {
+  .tur-banner {
+    height: 80vh;
+    min-height: 500px;
+    background-attachment: scroll;
+  }
+
+  .tur-title {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+  }
+
+  .tur-short {
+    font-size: 1.3rem;
+  }
+
+  .tur-infobox {
+    border-radius: 50px;
+    bottom: -30px;
+    gap: 20px;
+  }
+
+  .tur-info-item {
+    padding-right: 20px;
+    font-size: 14px;
+  }
+
+  .tur-info-item a {
+    font-size: 14px;
+  }
+
+  .tur-icon {
+    padding: 8px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .tur-banner {
+    height: 70vh;
+    min-height: 400px;
+  }
+
+  .tur-title {
+    font-size: 2rem;
+    margin-bottom: 15px;
+  }
+
+  .tur-prefix {
+    font-size: 1rem;
+  }
+
+  .tur-short {
+    font-size: 1.1rem;
+  }
+
+  .tur-infobox {
+    flex-wrap: wrap;
+    border-radius: 30px;
+    padding: 15px 20px;
+    bottom: -20px;
+    gap: 15px;
+    width: 95%;
+  }
+
+  .tur-info-item {
+    padding-right: 15px;
+    font-size: 13px;
+  }
+
+  .tur-info-item a {
+    font-size: 13px;
+  }
+
+  .tur-icon {
+    padding: 7px;
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 576px) {
+  .tur-banner {
+    height: 60vh;
+    min-height: 350px;
+  }
+
+  .tur-title {
+    font-size: 1.8rem;
+  }
+
+  .tur-prefix {
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+  }
+
+  .tur-short {
+    font-size: 1rem;
+  }
+
+  .tur-content {
+    padding: 10px;
+  }
+
+  .tur-infobox {
+    border-radius: 20px;
+    padding: 10px 15px;
+    bottom: -15px;
+    gap: 10px;
+  }
+
+  .tur-info-item {
+    padding-right: 10px;
+    font-size: 12px;
+    gap: 8px;
+  }
+
+  .tur-info-item a {
+    font-size: 12px;
+  }
+
+  .tur-icon {
+    padding: 6px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .tur-infobox {
+    flex-direction: column;
+    align-items: flex-start;
+    border-radius: 15px;
+    padding: 15px;
+    bottom: -50px;
+    gap: 12px;
+  }
+
+  .tur-info-item {
+    padding-right: 0;
+    width: 100%;
+  }
+
+  .tur-info-item:not(:last-child)::after {
+    display: none;
+  }
+}
