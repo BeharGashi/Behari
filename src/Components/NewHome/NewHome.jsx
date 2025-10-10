@@ -105,7 +105,7 @@ export default function Page() {
           playsInline
           preload="auto"
           aria-hidden="true"
-          poster="/poster.jpg" // vendos një poster real për LCP më të mirë
+          poster="/poster.jpg"
         >
           {/* MOBILE */}
           <source src={BackgroundMobile} type="video/mp4" media="(max-width: 640px)" />
@@ -114,25 +114,16 @@ export default function Page() {
         </video>
 
         <div className="newhero__overlay">
-          {/* Vetëm mobile */}
-          <div className="mobile-hero-text" aria-live="polite">
-            <h2>
-              Nachhaltiges Wohnen in
+          {/* Brand splash që shfaqet vetëm në fazën "final" */}
+          <div className={`brand-splash ${phase === "final" ? "final-phase" : ""}`} aria-live="polite">
+            <h2 className="brand-word" aria-label="Natural Wohnbau">
+              <span>Natural</span>
               <br />
-              modularen Holzhäusern
+              <span>Wohnbau</span>
             </h2>
           </div>
 
-          {phase === "final" ? (
-            // === ERRËSIM + REVEAL NGA POSHTË I "Natural Wohnbau" ===
-            <div className="brand-splash" aria-live="polite">
-              <h2 className="brand-word" aria-label="Natural Wohnbau">
-                <span>Natural</span>
-                <br />
-                <span>Wohnbau</span>
-              </h2>
-            </div>
-          ) : (
+          {phase === "slides" && (
             <div key={index} className="newhero__images newhero__images--fade">
               {currentTriplet.map((src, idx) => (
                 <div

@@ -72,8 +72,8 @@ export default function Navbar() {
             src={logo}
             alt="Natural Wohnbau"
             className="nv-logo-img"
-            width={240}     /* rezervo gjerësi (përshtate me raportin real të logos) */
-            height={80}     /* i përputhur me height CSS në desktop */
+            width={240}
+            height={80}
             decoding="async"
             fetchpriority="high"
           />
@@ -86,8 +86,6 @@ export default function Navbar() {
             <li
               key={group.key}
               className={`nv-item ${openMenu === group.key ? "is-active" : ""}`}
-              onMouseEnter={() => setOpenMenu(group.key)}
-              onMouseLeave={() => setOpenMenu(null)}
             >
               <button
                 className="nv-link has-caret"

@@ -1,120 +1,129 @@
-/* Sfondi i heros */
-.hero {
-  min-height: 90vh;
-  background-size: cover ;
-  background-position: center;
-  background-repeat: no-repeat;
+/* ===== HERO (mobile-first) ===== */
+.hero{
+  min-height: 80vh;
   position: relative;
   display: grid;
   place-items: center;
   overflow: hidden;
-}
 
-.hero::before {
-  /* overlay i errët (opsional) për kontrast me tekstin */
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(90% 70% at 15% 60%, rgba(21, 34, 43, 0.55), rgba(21, 34, 43,.62));
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.hero::before{
+  content:"";
+  position:absolute; inset:0;
+  background: radial-gradient(90% 70% at 15% 60%, rgba(21,34,43,.55), rgba(21,34,43,.62));
 }
 
 /* Layout */
-.hero__inner {
-  position: relative;
-  z-index: 1;
-  max-width: 1200px;
-  width: 100%;
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 48px;
-  padding-top: 100px;
+.hero__inner{
+  position: relative; z-index: 1;
+  max-width: 1200px; width: 100%;
+  display: grid; grid-template-columns: 1fr;
+  gap: 24px;
+  padding: 60px 16px 16px;
+  box-sizing: border-box;
 }
-
-.hero__text{
-    padding-top: 70px;
-}
-
-.hero__text h1 {
+.hero__text{ text-align: center; padding-top: 0; }
+.hero__text h1{
   font-size: clamp(32px, 5vw, 64px);
-  line-height: 1.05;
-  color: #fff;
-  margin: 0 0 18px;
-  letter-spacing: .5px;
+  line-height: 1.05; color:#fff;
+  margin: 0 0 14px; letter-spacing:.5px;
 }
-
-.hero__text p {
-  color: white;
+.hero__text p{
+  color:#fff;
   font-size: clamp(16px, 1.5vw, 18px);
-  max-width: 46ch;
-  margin: 0 0 28px;
+  max-width: 60ch;
+  margin: 0 0 24px;
+  margin-left: auto; margin-right: auto;
 }
-
-.btn {
-  background: #15222B;
-  color: #fff;
-  border: solid 1px #D6B349 ;
-  padding: 14px 22px;
-  border-radius: 14px;
-  font-weight: 700;
-  cursor: pointer;
-  box-shadow: 0 8px 20px rgba(255,106,42,.25);
+.btn{
+  background:#15222B; color:#fff;
+  border:1px solid #D6B349;
+  padding: 12px 20px;
+  border-radius:14px; font-weight:700; cursor:pointer;
+  box-shadow:0 8px 20px rgba(255,106,42,.25);
+  transition: transform .2s ease;
+  font-size: 15px;
 }
-.btn:hover { transform: translateY(-1px); }
+.btn:hover{ transform: translateY(-1px); }
 
 /* Visuali djathtas */
-.hero__visual {
+.hero__visual{
   position: relative;
-  width: min(560px, 90vw);
+  width: clamp(280px, 85vw, 320px);
   aspect-ratio: 1 / 1;
   margin-inline: auto;
 }
 
 /* Foto rrethore */
-.circle {
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  overflow: hidden;
+.circle{
+  position:absolute; inset:0; border-radius:50%; overflow:hidden;
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+}
+/* bëje overlay më të lehtë (ose komentoje fare nëse s’do asnjë “rim”) */
+.circle::after{
+  content:""; position:absolute; inset:0;
+  background: rgba(21,34,43,.15); /* ishte .25 */
+  z-index:1; pointer-events:none;
+}
+.circle img{
+  width:100%; height:100%; object-fit:cover; display:block;
+  position:relative; z-index:0;
 }
 
-.circle::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(21, 34, 43, 0.25); /* overlay me transparencë */
-  z-index: 1; /* mbi imazh, poshtë harkut */
-  pointer-events: none; /* të mos bllokojë klikimet */
+/* ---- ARC (SVG) ---- */
+.arc{
+  position:absolute; inset:0;
+  width:100%; height:100%;
+  pointer-events:none;
+  filter: drop-shadow(0 6px 24px rgba(214,179,73,.30));
 }
+/* Rrethi i harkut – animim i pastër me dashoffset */
+.arc-path{
+  fill:none;
+  stroke: #D6B349;
+  stroke-width: 8;
+  stroke-linecap: round;
 
-.circle img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  position: relative;
-  z-index: 0; /* imazhi poshtë overlay-t */
-}
+  /* Perimetri për r=46.25 ≈ 290.6 → shfaq ~83% (≈241) */
+  stroke-dasharray: 241 400;
+  stroke-dashoffset: 241;
 
-
-/* Harku i gjelbër që “vrapon” kur faqja hapet */
-.arc {
-  position: absolute;
-  inset: 0;
   transform-origin: 50% 50%;
-  /* animimi: nga -210deg -> 0deg, si të po rrotullohet rreth rrethit */
-  animation: arc-sweep 1.6s cubic-bezier(.2,.9,.2,1) both;
-  /* pak “depth” */
-  filter: drop-shadow(0 6px 24px rgba(214,179,73,.35));
+  transform: rotate(-210deg);
+  animation: arc-reveal 1.4s cubic-bezier(.2,.9,.2,1) forwards;
 }
-
-@keyframes arc-sweep {
-  0%   { transform: rotate(-210deg) scale(1.02); opacity: .0; }
+@keyframes arc-reveal{
+  0%   { stroke-dashoffset: 241; opacity: 0; }
   35%  { opacity: 1; }
-  100% { transform: rotate(270deg) scale(1); }
+  100% { stroke-dashoffset: 0; opacity: 1; }
 }
 
-/* Responsiviteti */
-@media (max-width: 900px) {
-  .hero__inner { grid-template-columns: 1fr; gap: 32px; }
-  .hero__text { text-align: left; }
+/* ===== Breakpoints ===== */
+@media (min-width:600px){
+  .hero{ min-height: 82vh; }
+  .hero__inner{ gap: 28px; padding: 80px 20px 20px; }
+  .hero__visual{ width: clamp(320px, 75vw, 380px); }
+}
+@media (min-width:900px){
+  .hero{ min-height: 90vh; }
+  .hero__inner{
+    grid-template-columns: 1.2fr 1fr;
+    gap: 48px; padding: 100px 20px 20px;
+  }
+  .hero__text{ text-align: left; padding-top: 70px; }
+  .hero__text p{ max-width: 46ch; margin-left: 0; margin-right: 0; }
+  .btn{ padding: 14px 22px; font-size: 1rem; }
+  .hero__visual{ width: min(480px, 48vw); }
+}
+@media (min-width:1200px){
+  .hero__visual{ width: min(560px, 42vw); }
+}
+
+/* Aksesueshmëri */
+@media (prefers-reduced-motion: reduce){
+  .arc-path{ animation: none; stroke-dashoffset: 0; }
+  .btn{ transition: none; }
 }
